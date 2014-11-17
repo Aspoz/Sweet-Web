@@ -1,0 +1,8 @@
+{
+  "name": "frontend",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.11.1",
+    "pubsub.js": "~0.1.0"
+  }
+}
