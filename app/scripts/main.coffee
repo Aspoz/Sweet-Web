@@ -1,7 +1,8 @@
 
 window.App =
   Models: {}
-  # ApiLocation: 'http://localhost:3000/'
+  Vent: PubSub
+  # ApiLocation: 'http://localhost:3001/'
   ApiLocation: 'http://178.62.204.157/api/'
 
   initialize: ->

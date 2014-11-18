@@ -1,15 +1,6 @@
-class App.Models.Document
+class App.Models.Document extends App.Models.Base
 
-  urlRoot: App.ApiLocation + 'documents/'
+  root: 'documents'
 
-  all: ->
-    $.ajax(
-      url: @urlRoot
-      type: 'GET'
-      dataType: 'json'
-    )
-    .done( (data) ->
-      console.log data
-    )
-    .fail (jqXHR, textStatus, errorThrown) ->
-      console.log 'Request failed: ' + textStatus
+  constructor: ->
+    super(@root)
