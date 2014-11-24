@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "jquery": "~1.11.1",
-    "pubsub.js": "~0.1.0"
+    "pubsub.js": "~0.1.0",
+    "handlebars": "~2.0.0",
+    "routie": "~0.3.2"
   }
 }

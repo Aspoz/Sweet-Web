@@ -3,7 +3,7 @@ class App.Models.Base
   constructor: (@root)->
     @urlRoot =  "#{App.ApiLocation}#{@root}/"
 
-  all: ->
+  all: () ->
     $.ajax(
       url: @urlRoot
       type: 'GET'
@@ -12,7 +12,6 @@ class App.Models.Base
     )
     .done( (data, textStatus, jqXHR) =>
       App.Vent.publish "model:#{@root}:all", data
-      console.log data
     )
     .fail (jqXHR, textStatus, errorThrown) ->
       console.log 'Request failed: ' + textStatus
@@ -24,9 +23,8 @@ class App.Models.Base
       dataType: 'json'
       crossDomain: true
     )
-    .done( (data) ->
+    .done( (data) =>
       App.Vent.publish "model:#{@root}:find", data
-      console.log data
     )
     .fail (jqXHR, textStatus, errorThrown) ->
       console.log 'Request failed: ' + textStatus
