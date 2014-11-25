@@ -1,12 +1,12 @@
 <!doctype html>
-<html class="no-js">
+<html>
   <head>
     <meta charset="utf-8">
     <title>frontend</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <link rel="shortcut icon" href="/favicon.ico">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lato:400italic,700italic,700,400' rel='stylesheet' type='text/css'>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -31,8 +31,17 @@
         </ul>
       </nav>
     </header>
-    <section class="main">
-    </section>
+    <div class="main">
+      <section id="jst-home" class="jst">Homepage</section>
+
+      <section id="jst-list" class="jst">
+        <div class="breadcrumb"></div>
+        <div class="button-wrapper"></div>
+        <div class="clear"></div>
+        <div class="listheading"></div>
+        <div class="doc-list"></div>
+      </section>
+    </div>
 
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -41,6 +50,7 @@
     <script src="bower_components/pubsub.js/src/pubsub.js"></script>
     <script src="bower_components/handlebars/handlebars.js"></script>
     <script src="bower_components/routie/dist/routie.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -59,8 +69,12 @@
         <script src="scripts/models/base.js"></script>
         <script src="scripts/models/case.js"></script>
         <script src="scripts/models/document.js"></script>
-        <script src="scripts/views/cases.js"></script>
+        <script src="scripts/views/breadcrumbs.js"></script>
+        <script src="scripts/views/list.js"></script>
+        <script src="scripts/views/case_index.js"></script>
+        <script src="scripts/views/case_show.js"></script>
         <script src="scripts/utils/router.js"></script>
+        <script src="scripts/utils/template.js"></script>
         <!-- endbuild -->
 </body>
 </html>

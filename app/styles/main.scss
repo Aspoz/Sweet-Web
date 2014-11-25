@@ -3,31 +3,31 @@
 
 html {
   letter-spacing: 0.25px;
-  font-family: Open Sans, sans-serif; }
+  font-family: Lato, sans-serif; }
 
 h1 {
   font-size: 1.5em;
-  font-family: Open Sans, sans-serif sans-serif;
+  font-family: Lato, sans-serif sans-serif;
   margin: 0; }
 
 h2 {
   font-size: 1.25em;
   font-weight: 700;
   letter-spacing: 1px;
-  font-family: Open Sans, sans-serif sans-serif;
+  font-family: Lato, sans-serif sans-serif;
   line-height: 20px;
   margin: 0; }
 
 h3 {
   font-size: 1em;
-  font-family: Open Sans, sans-serif sans-serif;
+  font-family: Lato, sans-serif sans-serif;
   margin: 0; }
 
 h4 {
   font-size: 0.75em;
   font-weight: 400;
   color: #d4d4d4;
-  font-family: Open Sans, sans-serif sans-serif;
+  font-family: Lato, sans-serif sans-serif;
   margin: 0; }
 
 .button-upload {
@@ -170,3 +170,10 @@ nav {
     width: 15%;
     float: left;
     font-size: 0.8em; }
+
+.jst {
+  display: none;
+}
+.jst-active {
+  display: block;
+}
