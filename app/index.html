@@ -10,6 +10,8 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/magnific-popup/dist/magnific-popup.css" />
+    <link rel="stylesheet" href="bower_components/dropzone/downloads/css/dropzone.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -41,6 +43,10 @@
         <div class="listheading"></div>
         <div class="doc-list"></div>
       </section>
+
+      <div class="white-popup">
+        <section id="jst-popup"></section>
+      </div>
     </div>
 
 
@@ -51,6 +57,8 @@
     <script src="bower_components/handlebars/handlebars.js"></script>
     <script src="bower_components/routie/dist/routie.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/magnific-popup/dist/jquery.magnific-popup.js"></script>
+    <script src="bower_components/dropzone/downloads/dropzone.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -73,8 +81,11 @@
         <script src="scripts/views/list.js"></script>
         <script src="scripts/views/case_index.js"></script>
         <script src="scripts/views/case_show.js"></script>
+        <script src="scripts/views/popup.js"></script>
         <script src="scripts/utils/router.js"></script>
         <script src="scripts/utils/template.js"></script>
+        <script src="scripts/utils/popup.js"></script>
+        <script src="scripts/utils/form.js"></script>
         <!-- endbuild -->
 </body>
 </html>

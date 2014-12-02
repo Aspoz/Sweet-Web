@@ -7,7 +7,24 @@ window.App =
   ApiLocation: 'http://178.62.204.157/'
 
   initialize: ->
-    new App.Util.Template()
+    @templateEngine()
+    @popupHelper()
+    @formHelper()
+    @router()
+
+
+  templateEngine: ->
+    t = new App.Util.Template
+
+  popupHelper: ->
+    new App.Views.Popup
+    p = new App.Util.Popup
+    p.start()
+
+  formHelper: ->
+    f = new App.Util.Form
+
+  router: ->
     r = new App.Util.Router
     r.start()
 

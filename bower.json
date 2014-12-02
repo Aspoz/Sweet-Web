@@ -6,6 +6,8 @@
     "pubsub.js": "~0.1.0",
     "handlebars": "~2.0.0",
     "routie": "~0.3.2",
-    "moment": "~2.8.4"
+    "moment": "~2.8.4",
+    "magnific-popup": "~0.9.9",
+    "dropzone": "~3.12.0"
   }
 }
