@@ -3,6 +3,7 @@ class App.Views.CaseShow extends App.Views.List
   constructor: () ->
     App.Vent.subscribe 'model:cases:find', @render
     App.Vent.subscribe 'cases:show:prepend', @prependItem
+    super()
 
   render: (data) =>
     @renderHeading()
@@ -25,10 +26,10 @@ class App.Views.CaseShow extends App.Views.List
     li = ''
     for item in data._links.documents
       li += @listItem item
-    @regions.list.html("<ul class='doc-list'>#{li}</ul>")
+    @regions.list.html("<ul>#{li}</ul>")
 
   prependItem: (data) =>
-    @regions.list.find('.doc-list').prepend(@listItem data)
+    @regions.list.find('ul').prepend(@listItem data)
 
   renderHeading: ->
     html = "
@@ -52,6 +53,8 @@ class App.Views.CaseShow extends App.Views.List
         <a class='popup-inline' data-subject_id='#{data.id}' href='#/documents/new'>abc</a>
       </div>
       <div class='button-edit grey-button-round'></div>
-      <div class='button-delete red-button-round'></div>
+      <div class='button-delete red-button-round'>
+        <a class='popup-inline' data-document_id='#{data.id}' href='#/documents/delete'>abc</a>
+      </div>
     "
     @regions.buttons.html(html)

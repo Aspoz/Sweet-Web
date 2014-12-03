@@ -2,6 +2,7 @@ class App.Views.Popup
 
   constructor: () ->
     App.Vent.subscribe 'popup:documents:new', @newDocument
+    App.Vent.subscribe 'popup:documents:delete', @deleteDocument
 
   newDocument: (data) ->
     html = "
@@ -17,3 +18,6 @@ class App.Views.Popup
 
     App.Vent.publish 'form:dropzone:documents', data
     App.Vent.publish 'popup:show:inline'
+
+  deleteDocument: (data) ->
+    console.log data.document_id

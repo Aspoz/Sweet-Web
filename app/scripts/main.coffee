@@ -3,7 +3,7 @@ window.App =
   Views: {}
   Vent: PubSub
   Util: {}
-  # ApiLocation: 'http://localhost:3001/'
+  # ApiLocation: 'http://localhost:3000/'
   ApiLocation: 'http://178.62.204.157/'
 
   initialize: ->
@@ -12,12 +12,11 @@ window.App =
     @formHelper()
     @router()
 
-
   templateEngine: ->
     t = new App.Util.Template
 
   popupHelper: ->
-    new App.Views.Popup
+    v = new App.Views.Popup
     p = new App.Util.Popup
     p.start()
 

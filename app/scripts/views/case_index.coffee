@@ -2,6 +2,7 @@ class App.Views.CaseIndex extends App.Views.List
 
   constructor: () ->
     App.Vent.subscribe 'model:cases:all', @render
+    super()
 
   render: (data) =>
     @renderHeading()
