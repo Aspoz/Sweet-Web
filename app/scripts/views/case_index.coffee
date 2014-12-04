@@ -1,12 +1,22 @@
 class App.Views.CaseIndex extends App.Views.List
 
+  events: []
+
   constructor: () ->
-    App.Vent.subscribe 'model:cases:all', @render
-    App.Vent.subscribe 'model:cases:create', @prependItem
-    App.Vent.subscribe 'model:cases:destroy', @removeItem
-    App.Vent.subscribe 'view:list:btns', @editDeleteButtons
-    App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
+    @removeListeners()
+    @addListeners()
     super()
+
+  removeListeners: () ->
+    @events.forEach (e) ->
+      App.Vent.unsubscribe e
+
+  addListeners: () ->
+    @events.push App.Vent.subscribe 'model:cases:all', @render
+    @events.push App.Vent.subscribe 'model:cases:create', @prependItem
+    @events.push App.Vent.subscribe 'model:cases:destroy', @removeItem
+    @events.push App.Vent.subscribe 'view:list:btns', @editDeleteButtons
+    @events.push App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
 
   render: (data) =>
     @renderHeading()

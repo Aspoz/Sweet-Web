@@ -1,11 +1,22 @@
 class App.Views.CaseShow extends App.Views.List
 
+  events: []
+
   constructor: () ->
-    App.Vent.subscribe 'model:cases:find', @render
-    App.Vent.subscribe 'model:documents:destroy', @removeItem
-    App.Vent.subscribe 'view:list:btns', @editDeleteButtons
-    App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
+    @removeListeners()
+    @addListeners()
     super()
+
+  removeListeners: () ->
+    @events.forEach (e) ->
+      App.Vent.unsubscribe e
+
+  addListeners: () ->
+    @events.push App.Vent.subscribe 'model:cases:find', @render
+    @events.push App.Vent.subscribe 'model:documents:create', @prependItem
+    @events.push App.Vent.subscribe 'model:documents:destroy', @removeItem
+    @events.push App.Vent.subscribe 'view:list:btns', @editDeleteButtons
+    @events.push App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
 
   render: (data) =>
     @renderHeading()
@@ -29,6 +40,9 @@ class App.Views.CaseShow extends App.Views.List
     for item in data._links.documents
       li += @listItem item
     @regions.list.html("<ul>#{li}</ul>")
+
+  prependItem: (data) =>
+    @regions.list.find('ul').prepend(@listItem data)
 
   renderHeading: ->
     html = "

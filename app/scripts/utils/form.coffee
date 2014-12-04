@@ -24,8 +24,9 @@ class App.Util.Form
           # Gets triggered when the form is actually being sent.
           # Hide the success button or the complete form.
 
+        @off 'success'
         @on 'success', (files, response) ->
-          # console.log response
+          App.Vent.publish 'model:documents:create', response
 
         @on 'error', (files, response) ->
           # Gets triggered when there was an error sending the files.
@@ -34,8 +35,8 @@ class App.Util.Form
 
         @on "complete", (file) ->
            if @getUploadingFiles().length is 0 and @getQueuedFiles().length is 0
-            m = new App.Models.Case
-            m.find data.subject_id
+            # m = new App.Models.Case
+            # m.find data.subject_id
             $.magnificPopup.close()
     )
 
