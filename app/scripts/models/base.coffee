@@ -35,10 +35,10 @@ class App.Models.Base
       type: 'POST'
       dataType: 'json'
       crossDomain: true
+      data: attr
     )
-    .done( (data) ->
+    .done( (data) =>
       App.Vent.publish "model:#{@root}:create", data
-      console.log data
     )
     .fail (jqXHR, textStatus, errorThrown) ->
       console.log 'Request failed: ' + textStatus
@@ -52,7 +52,7 @@ class App.Models.Base
       data:
         _method: 'put'
     )
-    .done( (data) ->
+    .done( (data) =>
       App.Vent.publish "model:#{@root}:update", data
       console.log data
     )

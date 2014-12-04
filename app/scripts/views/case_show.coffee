@@ -3,13 +3,9 @@ class App.Views.CaseShow extends App.Views.List
   constructor: () ->
     App.Vent.subscribe 'model:cases:find', @render
     App.Vent.subscribe 'model:documents:destroy', @removeItem
-    App.Vent.subscribe 'cases:show:prepend', @prependItem
     App.Vent.subscribe 'view:list:btns', @editDeleteButtons
     App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
     super()
-
-  debug: (a) ->
-    console.log a
 
   render: (data) =>
     @renderHeading()
@@ -33,9 +29,6 @@ class App.Views.CaseShow extends App.Views.List
     for item in data._links.documents
       li += @listItem item
     @regions.list.html("<ul>#{li}</ul>")
-
-  prependItem: (data) =>
-    @regions.list.find('ul').prepend(@listItem data)
 
   renderHeading: ->
     html = "
@@ -74,4 +67,4 @@ class App.Views.CaseShow extends App.Views.List
     @regions.buttons.delete.html(html)
 
   removeItem: (data) ->
-    $(".case[data-id=#{data.id}]").fadeOut()
+    $(".case[data-id=#{data.id}]").fadeOut(300)
