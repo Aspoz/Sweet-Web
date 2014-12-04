@@ -16,8 +16,20 @@ class App.Views.Popup
     "
     $('#jst-popup').html(html)
 
-    App.Vent.publish 'form:dropzone:documents', data
+    App.Vent.publish 'form:documents:new', data
     App.Vent.publish 'popup:show:inline'
 
   deleteDocument: (data) ->
-    console.log data.id
+    html = "
+    <h2>Delete Document</h2>
+    <p>Are you sure you want to delete '#{data.document_name}'</p>
+    <p>
+      <a id='popup-confirm-yes' href='#/documents/delete/yes'>Yes</a> |
+      <a id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>No</a>
+    </p>
+
+    "
+    $('#jst-popup').html(html)
+
+    App.Vent.publish 'form:documents:delete', data
+    App.Vent.publish 'popup:show:inline'

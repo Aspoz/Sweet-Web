@@ -46,9 +46,11 @@ class App.Models.Base
   update: (id, attr) ->
     $.ajax(
       url: @urlRoot + id
-      type: 'PUT'
+      type: 'POST'
       dataType: 'json'
       crossDomain: true
+      data:
+        _method: 'put'
     )
     .done( (data) ->
       App.Vent.publish "model:#{@root}:update", data
@@ -60,13 +62,14 @@ class App.Models.Base
   destroy: (id) ->
     $.ajax(
       url: @urlRoot + id
-      type: 'DELETE'
+      type: 'POST'
       dataType: 'json'
       crossDomain: true
+      data:
+        _method: 'delete'
     )
-    .done( (data) ->
-      App.Vent.publish "model:#{@root}:destroy", data
-      console.log data
+    .done( (data) =>
+      App.Vent.publish "model:#{@root}:destroy", id: id
     )
     .fail (jqXHR, textStatus, errorThrown) ->
       console.log 'Request failed: ' + textStatus

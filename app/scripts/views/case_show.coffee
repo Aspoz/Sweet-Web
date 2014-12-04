@@ -2,6 +2,7 @@ class App.Views.CaseShow extends App.Views.List
 
   constructor: () ->
     App.Vent.subscribe 'model:cases:find', @render
+    App.Vent.subscribe 'model:documents:destroy', @removeItem
     App.Vent.subscribe 'cases:show:prepend', @prependItem
     App.Vent.subscribe 'view:list:btns', @editDeleteButtons
     App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
@@ -19,7 +20,7 @@ class App.Views.CaseShow extends App.Views.List
   listItem: (item) ->
     created_at = moment(item.created_at).format('DD MMM. YYYY')
     li = "
-      <li class='case' data-id='#{item.id}'>
+      <li class='case' data-id='#{item.id}' data-name='#{item.attachment_file_name}'>
         <div class='case-name'><a href='//#{item.attachment_url}' target='blank'>#{item.attachment_file_name}</a></div>
         <div class='case-type'>#{item.attachment_content_type}</div>
         <div class='case-status'>#{created_at}</div>
@@ -65,9 +66,12 @@ class App.Views.CaseShow extends App.Views.List
     @regions.buttons.new.html(html)
 
   renderButtonEdit: (data) ->
-    html = "<a class='popup-inline' data-subject_id='#{data.id}' href='#/documents/edit'>abc</a>"
+    html = "<a class='popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/edit'>abc</a>"
     @regions.buttons.edit.html(html)
 
   renderButtonDelete: (data) ->
-    html = "<a class='popup-inline' data-subject_id='#{data.id}' href='#/documents/delete'>abc</a>"
+    html = "<a class='popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/delete'>abc</a>"
     @regions.buttons.delete.html(html)
+
+  removeItem: (data) ->
+    $(".case[data-id=#{data.id}]").fadeOut()
