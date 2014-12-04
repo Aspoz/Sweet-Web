@@ -20,4 +20,4 @@ class App.Views.Popup
     App.Vent.publish 'popup:show:inline'
 
   deleteDocument: (data) ->
-    console.log data.document_id
+    console.log data.id
