@@ -69,15 +69,15 @@ class App.Views.CaseShow extends App.Views.List
     @regions.buttons.delete.html('')
 
   renderButtonNew: (data) ->
-    html = "<a class='popup-inline' data-subject_id='#{data.id}' href='#/documents/new'>abc</a>"
+    html = "<a class='popup-inline' data-subject_id='#{data.id}' href='#/documents/new'><img src='./images/button-add.png' alt=''></a>"
     @regions.buttons.new.html(html)
 
   renderButtonEdit: (data) ->
-    html = "<a class='popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/edit'>abc</a>"
+    html = "<a class='popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/edit'><img src='./images/button-edit.png' alt=''></a>"
     @regions.buttons.edit.html(html)
 
   renderButtonDelete: (data) ->
-    html = "<a class='popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/delete'>abc</a>"
+    html = "<a class='popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/delete'><img src='./images/button-delete.png' alt=''></a>"
     @regions.buttons.delete.html(html)
 
   removeItem: (data) ->

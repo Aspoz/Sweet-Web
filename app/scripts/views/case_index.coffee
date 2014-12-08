@@ -65,15 +65,15 @@ class App.Views.CaseIndex extends App.Views.List
     @regions.buttons.delete.html('')
 
   renderButtonNew: (data) ->
-    html = "<a class='popup-inline' href='#/cases/new'>abc</a>"
+    html = "<a class='popup-inline' href='#/cases/new'><img src='./images/button-add.png' alt=''></a>"
     @regions.buttons.new.html(html)
 
   renderButtonEdit: (data) ->
-    html = "<a class='popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/edit'>abc</a>"
+    html = "<a class='popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/edit'><img src='./images/button-edit.png' alt=''></a>"
     @regions.buttons.edit.html(html)
 
   renderButtonDelete: (data) ->
-    html = "<a class='popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/delete'>abc</a>"
+    html = "<a class='popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/delete'><img src='./images/button-delete.png' alt=''></a>"
     @regions.buttons.delete.html(html)
 
   removeItem: (data) ->

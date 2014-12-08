@@ -4,6 +4,8 @@ class App.Util.Router
     routie(
       '': () ->
         App.Vent.publish 'template', { template: 'login', page: 'login' }
+        view = new App.Views.Login
+        view.render()
 
       '/cases': =>
         App.Vent.publish 'template', { template: 'list', page: 'app' }
