@@ -43,4 +43,5 @@ class App.Views.Login
 
   logIn: (data) ->
     if data.success
-      window.location.hash = '#/cases'
+      routie '/cases'
+      # TODO: session management

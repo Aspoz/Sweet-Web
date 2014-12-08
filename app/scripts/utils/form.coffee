@@ -1,11 +1,21 @@
 class App.Util.Form
 
+  events: []
+
   constructor: () ->
-    App.Vent.subscribe 'form:documents:new', @newDocument
-    App.Vent.subscribe 'form:documents:delete', @deleteDocument
-    App.Vent.subscribe 'form:cases:new', @newCase
-    App.Vent.subscribe 'form:cases:delete', @deleteCase
-    App.Vent.subscribe 'form:sessions:new', @newSession
+    @removeListeners()
+    @addListeners()
+
+  removeListeners: () ->
+    @events.forEach (e) ->
+      App.Vent.unsubscribe e
+
+  addListeners: () ->
+    @events.push App.Vent.subscribe 'form:documents:new', @newDocument
+    @events.push App.Vent.subscribe 'form:documents:delete', @deleteDocument
+    @events.push App.Vent.subscribe 'form:cases:new', @newCase
+    @events.push App.Vent.subscribe 'form:cases:delete', @deleteCase
+    @events.push App.Vent.subscribe 'form:sessions:new', @newSession
 
   newDocument: (data) ->
     new Dropzone('#dropzone',
