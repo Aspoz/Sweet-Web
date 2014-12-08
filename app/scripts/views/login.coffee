@@ -3,7 +3,18 @@ class App.Views.Login
   regions:
     wrap: $('.login-wrap')
 
-  constructor: ->
+  events: []
+
+  constructor: () ->
+    @removeListeners()
+    @addListeners()
+
+  removeListeners: () ->
+    @events.forEach (e) ->
+      App.Vent.unsubscribe e
+
+  addListeners: () ->
+    @events.push App.Vent.subscribe 'model:sessions:create', @logIn
 
   render: =>
     html = "
@@ -13,9 +24,9 @@ class App.Views.Login
       </div>
     </div>
 
-    <form method='post' action='index.html'>
+    <form id='form-login' method='post' action='#{App.ApiLocation}sessions'>
       <p>
-        <input class='inputfield' type='text' name='login' value='' placeholder='Username or Email'>
+        <input class='inputfield' type='text' name='email' value='' placeholder='Username or Email'>
         <div class='error-message-username'>Oops! The username is not correct, please try again.</div>
       </p>
       <p>
@@ -28,3 +39,8 @@ class App.Views.Login
     "
 
     @regions.wrap.html(html)
+    App.Vent.publish 'form:sessions:new'
+
+  logIn: (data) ->
+    if data.success
+      window.location.hash = '#/cases'

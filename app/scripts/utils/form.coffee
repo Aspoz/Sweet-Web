@@ -5,6 +5,7 @@ class App.Util.Form
     App.Vent.subscribe 'form:documents:delete', @deleteDocument
     App.Vent.subscribe 'form:cases:new', @newCase
     App.Vent.subscribe 'form:cases:delete', @deleteCase
+    App.Vent.subscribe 'form:sessions:new', @newSession
 
   newDocument: (data) ->
     new Dropzone('#dropzone',
@@ -64,3 +65,10 @@ class App.Util.Form
       m = new App.Models.Case
       m.destroy data.case_id
       $.magnificPopup.close()
+
+  newSession: () ->
+    $(document.body).off 'submit', '#form-login'
+    $(document.body).on 'submit', '#form-login', (e) ->
+      e.preventDefault()
+      m = new App.Models.Session
+      m.create $(this).serialize()
