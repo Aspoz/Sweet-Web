@@ -171,10 +171,12 @@ nav {
     float: left;
     font-size: 0.8em; }
 
-.jst {
+.jst,
+.jsp {
   display: none;
 }
-.jst-active {
+.jst-active,
+.jsp-active {
   display: block;
 }
 

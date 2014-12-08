@@ -20,33 +20,36 @@
   </head>
   <body>
 
-    <header>
-      <img src="images/logo.svg" alt="Nederlandse Aardolie Maatschappij" class="namlogo">
-      <nav>
-        <ul>
-          <li><a href="#/cases">Cases</a></li>
-          <li><a href="#">Users</a></li>
-          <li><a href="#">Logout</a></li>
-        </ul>
-      </nav>
-    </header>
-    <div class="main">
-      <section id="jst-home" class="jst">Homepage</section>
+    <div id="jsp-login" class="jsp"></div>
 
-      <section id="jst-list" class="jst">
-        <div class="breadcrumb"></div>
-        <div class="button-wrapper">
-          <div class='new button-upload blue-button-round'></div>
-          <!-- <div class='edit button-edit grey-button-round'></div> -->
-          <div class='delete button-delete red-button-round'></div>
+    <div id="jsp-app" class="jsp">
+      <header>
+        <img src="images/logo.svg" alt="Nederlandse Aardolie Maatschappij" class="namlogo">
+        <nav>
+          <ul>
+            <li><a href="#/cases">Cases</a></li>
+            <!-- <li><a href="#">Users</a></li> -->
+            <li><a href="#">Logout</a></li>
+          </ul>
+        </nav>
+      </header>
+      <div class="main">
+
+        <div id="jst-list" class="jst">
+          <div class="breadcrumb"></div>
+          <div class="button-wrapper">
+            <div class='new button-upload blue-button-round'></div>
+            <!-- <div class='edit button-edit grey-button-round'></div> -->
+            <div class='delete button-delete red-button-round'></div>
+          </div>
+          <div class="clear"></div>
+          <div class="listheading"></div>
+          <div class="doc-list"></div>
         </div>
-        <div class="clear"></div>
-        <div class="listheading"></div>
-        <div class="doc-list"></div>
-      </section>
 
-      <div class="white-popup">
-        <section id="jst-popup"></section>
+        <div class="white-popup">
+          <div id="jst-popup"></div>
+        </div>
       </div>
     </div>
 
