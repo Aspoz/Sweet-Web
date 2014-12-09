@@ -40,12 +40,15 @@ class App.Views.Login
     @regions.wrap.html(html)
     App.Vent.publish 'form:sessions:new'
 
-  logIn: (data) ->
+  logIn: (data) =>
     if data.success
       routie '/cases'
       # TODO: session management
     else
-      console.log data.errors
+      message = @regions.wrap.find '.error-message-login'
+      input = @regions.wrap.find '.inputfield'
+      message.empty()
+      input.addClass 'error'
       for error in data.errors
         html = "<p>* #{error}</p>"
-        $('.error-message-login').html(html)
+        message.append(html)
