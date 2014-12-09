@@ -23,14 +23,28 @@ class App.Views.Popup
 
   deleteDocument: (data) ->
     html = "
-    <h2>Delete Document</h2>
-    <p>Are you sure you want to delete '#{data.document_name}'</p>
-    <p>
-      <a id='popup-confirm-yes' href='#/documents/delete/yes'>Yes</a> |
-      <a id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>No</a>
-    </p>
-
-    "
+    <div class='box-wrapper'>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <div class='box-title'>
+            DELETE CASE
+          </div>
+        </div>
+      </div>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <div class='step-title'>
+            '#{data.document_name}' <br> Are you sure to delete this item?
+          </div>
+        </div>
+      </div>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+            <a class='grey-button-square left' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
+            <a class='red-button-square right' id='popup-confirm-yes' href='#/documents/delete/yes'>DELETE</a>
+        </div>
+      </div>
+    </div>"
     $('#jst-popup').html(html)
 
     App.Vent.publish 'form:documents:delete', data
@@ -122,12 +136,28 @@ class App.Views.Popup
 
   deleteCase: (data) ->
     html = "
-    <h2>Delete Case</h2>
-    <p>Are you sure you want to delete '#{data.case_title}'</p>
-    <p>
-      <a id='popup-confirm-yes' href='#/cases/delete/yes'>Yes</a> |
-      <a id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>No</a>
-    </p>
+    <div class='box-wrapper'>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <div class='box-title'>
+            DELETE CASE
+          </div>
+        </div>
+      </div>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <div class='step-title'>
+            '#{data.case_title}' <br> Are you sure to delete this item?
+          </div>
+        </div>
+      </div>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+            <a class='grey-button-square left' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
+            <a class='red-button-square right' id='popup-confirm-yes' href='#/cases/delete/yes'>DELETE</a>
+        </div>
+      </div>
+    </div>
     "
     $('#jst-popup').html(html)
     App.Vent.publish 'form:cases:delete', data

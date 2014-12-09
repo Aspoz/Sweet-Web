@@ -34,6 +34,12 @@ a {
   font-size: em(10px);
   color: #4a90e2; }
 
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
 .blue-button-round, .grey-button-round, .red-button-round {
   height: 35px;
   width: 35px;
@@ -44,7 +50,7 @@ a {
   cursor: pointer;
   -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.3);
-  behavior: url("../js/PIE.htc"); }
+  text-decoration: none; }
   .blue-button-round img, .grey-button-round img, .red-button-round img {
     height: 35px;
     width: 35px; }
@@ -85,7 +91,8 @@ a {
   cursor: pointer;
   font-weight: 600;
   -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3); }
+  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
+  text-decoration: none; }
 
 .grey-button-square {
   background-color: #b2b8c5; }
