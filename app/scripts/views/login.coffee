@@ -27,13 +27,12 @@ class App.Views.Login
     <form id='form-login' method='post' action='#{App.ApiLocation}sessions'>
       <p>
         <input class='inputfield' type='text' name='email' value='' placeholder='Username or Email'>
-        <div class='error-message-username'>Oops! The username is not correct, please try again.</div>
       </p>
       <p>
         <input class='inputfield' type='password' name='password' value='' placeholder='Password'>
-        <div class='error-message-password'>Oops! The password is not correct, please try again.</div>
       </p>
-      <p><a href='forgot-password.html'>Forgot password?</a></p>
+      <div class='error-message-login'></div>
+      <!--<p><a href='forgot-password.html'>Forgot password?</a></p>-->
       <p><input type='submit' name='commit' value='LOGIN' class='blue-large-button-square'></p>
     </form>
     "
@@ -45,3 +44,8 @@ class App.Views.Login
     if data.success
       routie '/cases'
       # TODO: session management
+    else
+      console.log data.errors
+      for error in data.errors
+        html = "<p>* #{error}</p>"
+        $('.error-message-login').html(html)
