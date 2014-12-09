@@ -158,6 +158,12 @@ a {
   .red-large-button-square:active {
     background-color: #f06143; }
 
+.btn-upload {
+  margin-bottom: 40px;
+  margin-top: 20px;
+  width: 100%;
+}
+
 .box-wrapper {
   width: 205px;
   background-color: white;
@@ -394,8 +400,7 @@ input[type=text], input[type=password] {
   display: table;
   padding: 25px 40px 10px;
   background-color: white;
-  border-radius: 4px;
-  behavior: url("../js/PIE.htc"); }
+  border-radius: 4px; }
   .login-wrap div {
     margin: auto; }
   .login-wrap .grey-logo {
@@ -449,8 +454,7 @@ input[type=text], input[type=password] {
   -webkit-transform: translateY(100px);
   -webkit-animation: slideUp 4s 0.25s 1 ease forwards;
   -moz-transform: translateY(100px);
-  -moz-animation: slideUp 4s 0.25s 1 ease forwards;
-  behavior: url("../js/PIE.htc"); }
+  -moz-animation: slideUp 4s 0.25s 1 ease forwards; }
 
 .red-notification {
   float: right;
@@ -459,8 +463,7 @@ input[type=text], input[type=password] {
   border-radius: 12px;
   border: 1px solid;
   border-color: #fb6d50;
-  margin-right: 50px;
-  behavior: url("../js/PIE.htc"); }
+  margin-right: 50px; }
 
 .green-notification {
   float: right;
@@ -469,8 +472,7 @@ input[type=text], input[type=password] {
   border-radius: 12px;
   border: 1px solid;
   border-color: #6abf28;
-  margin-right: 50px;
-  behavior: url("../js/PIE.htc"); }
+  margin-right: 50px; }
 
 .notification-cell {
   display: table-cell;
@@ -496,7 +498,18 @@ input[type=text], input[type=password] {
   10%, 90% {
     -moz-transform: translateY(0px); } }
 
-
+// Dropzone
+.dz-error-mark, .dz-progress, .dz-success-mark {
+  display: none; }
+.dz-message {
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 20px;
+}
+.dz-message:hover {
+  background-color: #eee;
+}
 // MY STUFF
 .jst,
 .jsp {

@@ -8,13 +8,24 @@ class App.Views.Popup
 
   newDocument: (data) ->
     html = "
-    <h2>Upload file</h2>
-    <hr/>
-    <form id='dropzone' action='#{App.ApiLocation}documents' method='post'>
-      <input type='hidden' name='document[subject_id]' value='#{data.subject_id}' />
-      <div class='dz-message' style='cursor:pointer;'>Drop files here to upload</div>
-      <button type='submit'>Upload</button>
-    </form>
+    <div class='box-wrapper'>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <div class='box-title'>
+            UPLOAD FILES
+          </div>
+        </div>
+      </div>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <form id='dropzone' action='#{App.ApiLocation}documents' method='post'>
+            <input type='hidden' name='document[subject_id]' value='#{data.subject_id}' />
+            <div class='dz-message'>Drag &amp; Drop your file(s) or select it from a directory</div>
+            <button class='green-button-square btn-upload' type='submit'>UPLOAD</button>
+          </form>
+        </div>
+      </div>
+    </div>
     "
     $('#jst-popup').html(html)
 

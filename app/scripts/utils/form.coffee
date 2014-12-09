@@ -23,7 +23,7 @@ class App.Util.Form
       autoProcessQueue: false
       uploadMultiple: false
       parallelUploads: 10
-      maxFiles: 10
+      maxFiles: 50
 
       init: ->
         $(@element).find('button[type=submit]').on 'click', (e) =>
