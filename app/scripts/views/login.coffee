@@ -38,6 +38,7 @@ class App.Views.Login
     "
 
     @regions.wrap.html(html)
+    App.Vent.publish 'template:spinner:hide'
     App.Vent.publish 'form:sessions:new'
 
   logIn: (data) =>

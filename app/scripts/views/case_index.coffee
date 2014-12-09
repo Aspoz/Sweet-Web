@@ -19,6 +19,7 @@ class App.Views.CaseIndex extends App.Views.List
     @events.push App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
 
   render: (data) =>
+    App.Vent.publish 'template:spinner:hide'
     @renderHeading()
     @renderList(data)
     @renderBreadcrumbs()

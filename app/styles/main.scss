@@ -540,3 +540,23 @@ input[type=text], input[type=password] {
   height: 50px;
   width: 50px;
 }
+.preloader {
+  background: #fff;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -150px;
+  padding: 50px;
+  opacity: 0.9;
+  text-align: center;
+  width: 200px
+}
+.preloader img {
+
+}
+.preloader span {
+  display: block;
+  margin-top: 20px;
+}
