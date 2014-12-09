@@ -23,6 +23,7 @@ class App.Views.CaseShow extends App.Views.List
     @renderList(data)
     @renderBreadcrumbs(data)
     @renderButtonNew(data)
+    @editDeleteButtonsDelete()
 
   listItem: (item) ->
     created_at = moment(item.created_at).format('DD MMM. YYYY')

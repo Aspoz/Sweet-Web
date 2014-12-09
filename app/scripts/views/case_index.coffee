@@ -23,6 +23,7 @@ class App.Views.CaseIndex extends App.Views.List
     @renderList(data)
     @renderBreadcrumbs()
     @renderButtonNew(data)
+    @editDeleteButtonsDelete()
 
   listItem: (item) ->
     li = "

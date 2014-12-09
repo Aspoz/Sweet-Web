@@ -9,17 +9,17 @@ class App.Views.List
     list: $("#jst-list .doc-list")
 
   constructor: ->
+    @caseClickHandler()
+
+  caseClickHandler: () =>
     $(document.body).off 'click', '.case'
     $(document.body).on 'click', '.case', (e) ->
-      if !$(e.target).is 'a'
-        $this = $(this)
-        classname = 'highlight'
-        if $this.hasClass classname
-          $this.removeClass classname
-          App.Vent.publish 'view:list:btns:remove'
-        else
-          $('.case.highlight').removeClass classname
-          $this.addClass 'highlight'
-          App.Vent.publish 'view:list:btns', $this.data()
-      else
+      $this = $(this)
+      classname = 'highlight'
+      if $this.hasClass classname
+        $this.removeClass classname
         App.Vent.publish 'view:list:btns:remove'
+      else
+        $('.case.highlight').removeClass classname
+        $this.addClass 'highlight'
+        App.Vent.publish 'view:list:btns', $this.data()
