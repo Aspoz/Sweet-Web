@@ -31,7 +31,7 @@ class App.Views.Login
       <p>
         <input class='inputfield' type='password' name='password' value='' placeholder='Password'>
       </p>
-      <div class='error-message-login'></div>
+      <p class='error-message-login'></p>
       <!--<p><a href='forgot-password.html'>Forgot password?</a></p>-->
       <p><input type='submit' name='commit' value='LOGIN' class='blue-large-button-square'></p>
     </form>
@@ -48,7 +48,7 @@ class App.Views.Login
       message = @regions.wrap.find '.error-message-login'
       input = @regions.wrap.find '.inputfield'
       message.empty()
-      input.addClass 'error'
+      input.addClass 'inputfield-error'
       for error in data.errors
         html = "<p>* #{error}</p>"
         message.append(html)

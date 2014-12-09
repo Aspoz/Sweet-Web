@@ -337,6 +337,9 @@ input[type=text], input[type=password] {
   border: 1px solid;
   border-color: #4a90e2; }
 
+.inputfield-error {
+  border-color: #fb6d50; }
+
 .file-inputfield::-webkit-file-upload-button {
   display: none; }
 
@@ -400,6 +403,11 @@ input[type=text], input[type=password] {
     width: 55px;
     height: 53px;
     margin: 0 75px 20px; }
+
+.error-message-login {
+  color: #fb6d50;
+  font-style: italic;
+  margin-top: -15px; }
 
 .error-message-username, .error-message-password {
   width: 195px;
