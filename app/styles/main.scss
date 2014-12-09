@@ -151,6 +151,45 @@ a {
   .red-large-button-square:active {
     background-color: #f06143; }
 
+.box-wrapper {
+  width: 205px;
+  background-color: white;
+  margin: auto;
+  display: table;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0 40px 20px; }
+
+.box-row-wrapper {
+  display: table-row; }
+
+.box-cell-wrapper {
+  display: table-cell;
+  width: 205px;
+  padding: 0;
+  margin: 0 auto;
+  text-align: center;}
+
+.step-title {
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.875em;
+  color: #555555;
+  margin: 15px 0;
+  display: block;
+  text-align: center; }
+
+.box-title {
+  width: 100%;
+  display: block;
+  height: 50px;
+  font-weight: 600;
+  line-height: 50px;
+  background: white;
+  color: #6e6e6e;
+  text-align: center;
+  border-radius: 8px 8px 0 0; }
+
 html {
   height: 100%; }
 
@@ -285,6 +324,30 @@ nav {
   border: 1px dashed;
   border-color: #4a90e2; }
 
+.case-type-button {
+  float: left;
+  width: 25%; }
+
+.case-status-button {
+  float: left;
+  width: 50%; }
+
+.case-status-button label, .case-type-button label {
+  text-align: center;
+  display: block;
+  margin: 3px 0; }
+.case-status-button input[type=radio], .case-type-button input[type=radio] {
+  height: 20px;
+  width: 20px;
+  visibility: none;
+  cursor: pointer; }
+
+.case-status-button input[type=radio] {
+  margin: 0 44px; }
+
+.case-type-button input[type=radio] {
+  margin: 0 17px; }
+
 .login-background {
   background: url("../images/background.jpg");
   background-size: cover;
@@ -412,6 +475,6 @@ nav {
   background: #FFF;
   padding: 20px;
   width: auto;
-  max-width: 600px;
+  max-width: 300px;
   margin: 20px auto;
 }

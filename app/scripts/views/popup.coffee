@@ -38,14 +38,81 @@ class App.Views.Popup
 
   newCase: (data) ->
     html = "
-    <h2>New Case</h2>
-    <hr/>
-    <form id='form-case-new' action='#{App.ApiLocation}cases' method='post'>
-      <input type='text' name='subject[title]' placeholder='title' />
-      <input type='text' name='subject[status]' placeholder='status' />
-      <input type='text' name='subject[casetype]' placeholder='type' />
-      <button type='submit'>New</button>
-    </form>
+    <div class='box-wrapper'>
+      <form id='form-case-new' action='#{App.ApiLocation}cases' method='post'>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='box-title'>
+              ADD CASE
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='step-title'>
+              What is the name of the Case?
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input class='inputfield' type='text' name='subject[title]' value='' placeholder='Case name'>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='step-title'>
+              What type is the Case?
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='case-type-button'>
+              <input id='RFA' type='radio' name='subject[casetype]' value='RFA'><br>
+              <label for='RFA'>RFA</label>
+            </div>
+            <div class='case-type-button'>
+              <input id='NFI' type='radio' name='subject[casetype]' value='NFI'><br>
+              <label for='NFI'>NFI</label>
+            </div>
+            <div class='case-type-button'>
+              <input id='RFC' type='radio' name='subject[casetype]' value='RFC'><br>
+              <label for='RFC'>RFC</label>
+            </div>
+            <div class='case-type-button'>
+              <input id='info' type='radio' name='subject[casetype]' value='info'><br>
+              <label for='info'>info</label>
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='step-title'>
+              What status is the Case?
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='case-status-button'>
+              <input id='open' type='radio' name='subject[status]' value='Open'>
+              <label for='open'>Open</label>
+            </div>
+
+            <div class='case-status-button'>
+              <input id='in-progress' type='radio' name='subject[status]' value='In progress'>
+              <label for='in-progress'>In progress</label>
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input type='submit' value='CREATE' class='green-button-square'>
+          </div>
+        </div>
+      </form>
+    </div>
     "
     $('#jst-popup').html(html)
 
