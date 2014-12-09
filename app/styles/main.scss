@@ -400,7 +400,12 @@ input[type=text], input[type=password] {
   display: table;
   padding: 25px 40px 10px;
   background-color: white;
-  border-radius: 4px; }
+  border-radius: 4px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -146px;
+  margin-top: -151px; }
   .login-wrap div {
     margin: auto; }
   .login-wrap .grey-logo {
