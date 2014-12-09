@@ -298,7 +298,29 @@ nav {
     float: left;
     font-size: 0.8em; }
 
+input[type=text], input[type=password] {
+  font-size: 14px;
+  padding-left: 3px; }
 
+::-webkit-input-placeholder {
+  font-size: 14px;
+  overflow: visible;
+  padding-left: 3px; }
+
+:-moz-placeholder {
+  font-size: 14px;
+  overflow: visible;
+  padding-left: 3px; }
+
+::-moz-placeholder {
+  font-size: 14px;
+  overflow: visible;
+  padding-left: 3px; }
+
+:-ms-input-placeholder {
+  font-size: 14px;
+  overflow: visible;
+  padding-left: 3px; }
 
 .inputfield {
   height: 31px;
