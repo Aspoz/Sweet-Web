@@ -20,7 +20,7 @@ class App.Views.Login
     html = "
     <div class='box-row-wrapper'>
       <div class='box-cell-wrapper'>
-        <img class='grey-logo' alt='Nederlandse Aardolie Maatschappij' src='./images/nam-logo-grey.png'>
+        <img class='grey-logo' alt='Nederlandse Aardolie Maatschappij' src='images/nam-logo-grey.png'>
       </div>
     </div>
 
