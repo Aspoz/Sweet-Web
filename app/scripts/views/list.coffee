@@ -11,14 +11,15 @@ class App.Views.List
   constructor: ->
     $(document.body).off 'click', '.case'
     $(document.body).on 'click', '.case', (e) ->
-      $this = $(this)
-      classname = 'highlight'
-      if $this.hasClass classname
-        $this.removeClass classname
-        App.Vent.publish 'view:list:btns:remove'
+      if !$(e.target).is 'a'
+        $this = $(this)
+        classname = 'highlight'
+        if $this.hasClass classname
+          $this.removeClass classname
+          App.Vent.publish 'view:list:btns:remove'
+        else
+          $('.case.highlight').removeClass classname
+          $this.addClass 'highlight'
+          App.Vent.publish 'view:list:btns', $this.data()
       else
-        $('.case.highlight').removeClass classname
-        $this.addClass 'highlight'
-        App.Vent.publish 'view:list:btns', $this.data()
-
-
+        App.Vent.publish 'view:list:btns:remove'
