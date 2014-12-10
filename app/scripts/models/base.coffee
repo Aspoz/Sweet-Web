@@ -13,8 +13,8 @@ class App.Models.Base
     .done( (data, textStatus, jqXHR) =>
       App.Vent.publish "model:#{@root}:all", data
     )
-    .fail (jqXHR, textStatus, errorThrown) ->
-      console.log 'Request failed: ' + textStatus
+    .fail (jqXHR, textStatus, errorThrown) =>
+      App.Vent.publish "model:#{@root}:all:error", jqXHR.responseJSON
 
   find: (id) ->
     $.ajax(
@@ -26,8 +26,8 @@ class App.Models.Base
     .done( (data) =>
       App.Vent.publish "model:#{@root}:find", data
     )
-    .fail (jqXHR, textStatus, errorThrown) ->
-      console.log 'Request failed: ' + textStatus
+    .fail (jqXHR, textStatus, errorThrown) =>
+      App.Vent.publish "model:#{@root}:find:error", jqXHR.responseJSON
 
   create: (attr) ->
     $.ajax(
@@ -40,8 +40,8 @@ class App.Models.Base
     .done( (data) =>
       App.Vent.publish "model:#{@root}:create", data
     )
-    .fail (jqXHR, textStatus, errorThrown) ->
-      console.log 'Request failed: ' + textStatus
+    .fail (jqXHR, textStatus, errorThrown) =>
+      App.Vent.publish "model:#{@root}:create:error", jqXHR.responseJSON
 
   update: (id, attr) ->
     $.ajax(
@@ -56,8 +56,8 @@ class App.Models.Base
       App.Vent.publish "model:#{@root}:update", data
       console.log data
     )
-    .fail (jqXHR, textStatus, errorThrown) ->
-      console.log 'Request failed: ' + textStatus
+    .fail (jqXHR, textStatus, errorThrown) =>
+      App.Vent.publish "model:#{@root}:update:error", jqXHR.responseJSON
 
   destroy: (id) ->
     $.ajax(
@@ -71,5 +71,5 @@ class App.Models.Base
     .done( (data) =>
       App.Vent.publish "model:#{@root}:destroy", id: id
     )
-    .fail (jqXHR, textStatus, errorThrown) ->
-      console.log 'Request failed: ' + textStatus
+    .fail (jqXHR, textStatus, errorThrown) =>
+      App.Vent.publish "model:#{@root}:destroy:error", jqXHR.responseJSON
