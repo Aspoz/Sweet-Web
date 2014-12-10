@@ -61,10 +61,9 @@ class App.Util.Form
       $.magnificPopup.close()
 
   newCase: (data) ->
-    m = new App.Models.Case
-
     $(document.body).off 'submit', '#form-case-new'
     $(document.body).on 'submit', '#form-case-new', (e) ->
+      m = new App.Models.Case
       e.preventDefault()
       m.create $(this).serialize()
       $.magnificPopup.close()
