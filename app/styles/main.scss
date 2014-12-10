@@ -421,6 +421,10 @@ input[type=text], input[type=password] {
   font-style: italic;
   margin-top: -15px; }
 
+.error-message-form {
+  color: #fb6d50;
+  font-style: italic; }
+
 .error-message-username, .error-message-password {
   width: 195px;
   position: absolute;

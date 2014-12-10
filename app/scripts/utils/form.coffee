@@ -62,12 +62,14 @@ class App.Util.Form
       $.magnificPopup.close()
 
   newCase: (data) ->
+    App.Vent.subscribe 'model:cases:create', (data) ->
+      $.magnificPopup.close()
+
     $(document.body).off 'submit', '#form-case-new'
     $(document.body).on 'submit', '#form-case-new', (e) ->
       m = new App.Models.Case
       e.preventDefault()
       m.create $(this).serialize()
-      $.magnificPopup.close()
 
   deleteCase: (data) ->
     $(document.body).off 'click', '#popup-confirm-yes'

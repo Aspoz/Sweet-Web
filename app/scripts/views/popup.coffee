@@ -8,6 +8,8 @@ class App.Views.Popup
     App.Vent.subscribe 'popup:users:new', @newUser
     App.Vent.subscribe 'popup:users:delete', @deleteUser
 
+    App.Vent.subscribe 'model:cases:create:error', @newCaseError
+
   newDocument: (data) ->
     html = "
     <div class='box-wrapper'>
@@ -33,6 +35,7 @@ class App.Views.Popup
 
     App.Vent.publish 'form:documents:new', data
     App.Vent.publish 'popup:show:inline'
+
 
   deleteDocument: (data) ->
     html = "
@@ -63,6 +66,7 @@ class App.Views.Popup
     App.Vent.publish 'form:documents:delete', data
     App.Vent.publish 'popup:show:inline'
 
+
   newCase: (data) ->
     html = "
     <div class='box-wrapper'>
@@ -82,7 +86,7 @@ class App.Views.Popup
           </div>
         </div>
         <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
+          <div class='box-cell-wrapper' id='subject_title'>
             <input class='inputfield' type='text' name='subject[title]' value='' placeholder='Case name'>
           </div>
         </div>
@@ -96,7 +100,7 @@ class App.Views.Popup
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='case-type-button'>
-              <input id='RFA' type='radio' name='subject[casetype]' value='RFA'><br>
+              <input id='RFA' type='radio' name='subject[casetype]' value='RFA' checked='checked'><br>
               <label for='RFA'>RFA</label>
             </div>
             <div class='case-type-button'>
@@ -123,7 +127,7 @@ class App.Views.Popup
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='case-status-button'>
-              <input id='open' type='radio' name='subject[status]' value='Open'>
+              <input id='open' type='radio' name='subject[status]' value='Open' checked='checked'>
               <label for='open'>Open</label>
             </div>
 
@@ -145,6 +149,14 @@ class App.Views.Popup
 
     App.Vent.publish 'form:cases:new', data
     App.Vent.publish 'popup:show:inline'
+
+
+  newCaseError: (data) ->
+    for key, value of data.errors
+      if key == 'title'
+        $subjectTitle = $('#subject_title')
+        $subjectTitle.find('input').addClass 'inputfield-error'
+        $subjectTitle.append "<div class='error-message-form'>#{value}</div>"
 
 
   deleteCase: (data) ->
@@ -175,6 +187,7 @@ class App.Views.Popup
     $('#jst-popup').html(html)
     App.Vent.publish 'form:cases:delete', data
     App.Vent.publish 'popup:show:inline'
+
 
   newUser: (data) ->
     html = "
@@ -227,6 +240,7 @@ class App.Views.Popup
 
     App.Vent.publish 'form:users:new', data
     App.Vent.publish 'popup:show:inline'
+
 
   deleteUser: (data) ->
     html = "
