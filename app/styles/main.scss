@@ -226,22 +226,22 @@ body {
     float: left;
     width: 128px; }
 
-nav {
+.nav {
   margin-right: 5%; }
-  nav ul {
+  .nav ul {
     list-style: none;
     float: right;
     margin: 0; }
-    nav ul li {
+    .nav ul li {
       float: left;
       font-size: 1.125em; }
-      nav ul li a {
+      .nav ul li a {
         color: white;
         display: block;
         line-height: 60px;
         padding: 0 20px;
         text-decoration: none; }
-        nav ul li:hover a {
+        .nav ul li:hover a {
           background: #90d05e; }
 
 .main {
