@@ -541,7 +541,7 @@ input[type=text], input[type=password] {
   width: 50px;
 }
 .preloader {
-  background: #fff;
+  // background: #fff;
   display: none;
   position: absolute;
   top: 50%;
@@ -549,7 +549,7 @@ input[type=text], input[type=password] {
   margin-left: -114px;
   margin-top: -114px;
   padding: 50px;
-  opacity: 0.9;
+  opacity: 0.5;
   text-align: center;
 }
 .preloader img {
