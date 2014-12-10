@@ -6,6 +6,7 @@ class App.Views.Popup
     App.Vent.subscribe 'popup:cases:new', @newCase
     App.Vent.subscribe 'popup:cases:delete', @deleteCase
     App.Vent.subscribe 'popup:users:new', @newUser
+    App.Vent.subscribe 'popup:users:delete', @deleteUser
 
   newDocument: (data) ->
     html = "
@@ -225,4 +226,33 @@ class App.Views.Popup
     $('#jst-popup').html(html)
 
     App.Vent.publish 'form:users:new', data
+    App.Vent.publish 'popup:show:inline'
+
+  deleteUser: (data) ->
+    html = "
+    <div class='box-wrapper'>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <div class='box-title'>
+            DELETE CASE
+          </div>
+        </div>
+      </div>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+          <div class='step-title'>
+            '#{data.user_name}' <br> Are you sure to delete this user?
+          </div>
+        </div>
+      </div>
+      <div class='box-row-wrapper'>
+        <div class='box-cell-wrapper'>
+            <a class='grey-button-square left' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
+            <a class='red-button-square right' id='popup-confirm-yes' href='#/users/delete/yes'>DELETE</a>
+        </div>
+      </div>
+    </div>
+    "
+    $('#jst-popup').html(html)
+    App.Vent.publish 'form:users:delete', data
     App.Vent.publish 'popup:show:inline'
