@@ -5,6 +5,7 @@ class App.Views.Popup
     App.Vent.subscribe 'popup:documents:delete', @deleteDocument
     App.Vent.subscribe 'popup:cases:new', @newCase
     App.Vent.subscribe 'popup:cases:delete', @deleteCase
+    App.Vent.subscribe 'popup:users:new', @newUser
 
   newDocument: (data) ->
     html = "
@@ -172,4 +173,56 @@ class App.Views.Popup
     "
     $('#jst-popup').html(html)
     App.Vent.publish 'form:cases:delete', data
+    App.Vent.publish 'popup:show:inline'
+
+  newUser: (data) ->
+    html = "
+    <div class='box-wrapper'>
+      <form id='form-user-new' action='#{App.ApiLocation}users' method='post'>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='box-title'>
+              INVITE USER
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input class='inputfield' type='text' name='user[name]' placeholder='Name'>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input class='inputfield' type='text' name='user[email]' placeholder='E-mail'>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='step-title'>
+              Password must contain aleast 6 characters with one lower case letter, one upper case letter and one digit or symbol
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input class='inputfield' type='password' name='user[password]' placeholder='Password'>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input class='inputfield' type='password' name='user[password_confirmation]' placeholder='Repeat password'>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input type='hidden' name='user[group_id]' value='0'>
+            <input type='submit' value='INVITE' class='green-button-square'>
+          </div>
+        </div>
+      </form>
+    </div>
+    "
+    $('#jst-popup').html(html)
+
+    App.Vent.publish 'form:users:new', data
     App.Vent.publish 'popup:show:inline'

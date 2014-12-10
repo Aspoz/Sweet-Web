@@ -16,6 +16,7 @@ class App.Util.Form
     @events.push App.Vent.subscribe 'form:cases:new', @newCase
     @events.push App.Vent.subscribe 'form:cases:delete', @deleteCase
     @events.push App.Vent.subscribe 'form:sessions:new', @newSession
+    @events.push App.Vent.subscribe 'form:users:new', @newUser
 
   newDocument: (data) ->
     new Dropzone('#dropzone',
@@ -82,3 +83,11 @@ class App.Util.Form
       e.preventDefault()
       m = new App.Models.Session
       m.create $(this).serialize()
+
+  newUser: (data) ->
+    $(document.body).off 'submit', '#form-user-new'
+    $(document.body).on 'submit', '#form-user-new', (e) ->
+      m = new App.Models.User
+      e.preventDefault()
+      m.create $(this).serialize()
+      $.magnificPopup.close()

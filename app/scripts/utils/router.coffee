@@ -18,4 +18,10 @@ class App.Util.Router
         model = new App.Models.Case
         view = new App.Views.CaseShow
         model.find(id)
+
+      '/users': =>
+        App.Vent.publish 'template', { template: 'list', page: 'app' }
+        model = new App.Models.User
+        view = new App.Views.UserIndex
+        model.all()
     )
