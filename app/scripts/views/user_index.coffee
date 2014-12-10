@@ -54,7 +54,7 @@ class App.Views.UserIndex extends App.Views.List
     @regions.heading.html(html)
 
   renderBreadcrumbs: ->
-    breadcrumb = [{'title':'All users','href': '#/users'}]
+    breadcrumb = [{'title':'All Users','href': '#/users'}]
     view = App.Views.Breadcrumbs(breadcrumb)
     @regions.breadcrumbs.html(view)
 
