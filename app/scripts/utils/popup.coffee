@@ -2,6 +2,7 @@ class App.Util.Popup
 
   constructor: ->
     App.Vent.subscribe 'popup:show:inline', @showInline
+    App.Vent.subscribe 'popup:close', @close
 
   start: ->
     $(document.body).on 'click', '.popup-inline', (e) ->
@@ -15,3 +16,6 @@ class App.Util.Popup
       items:
         src: '.white-popup'
         type: 'inline'
+
+  close: () ->
+    $.magnificPopup.close()
