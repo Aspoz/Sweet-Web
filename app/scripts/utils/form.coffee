@@ -87,12 +87,14 @@ class App.Util.Form
       m.create $(this).serialize()
 
   newUser: (data) ->
+    App.Vent.subscribe 'model:users:create', (data) ->
+      $.magnificPopup.close()
+
     $(document.body).off 'submit', '#form-user-new'
     $(document.body).on 'submit', '#form-user-new', (e) ->
       m = new App.Models.User
       e.preventDefault()
       m.create $(this).serialize()
-      $.magnificPopup.close()
 
   deleteUser: (data) ->
     $(document.body).off 'click', '#popup-confirm-yes'

@@ -9,6 +9,7 @@ class App.Views.Popup
     App.Vent.subscribe 'popup:users:delete', @deleteUser
 
     App.Vent.subscribe 'model:cases:create:error', @newCaseError
+    App.Vent.subscribe 'model:users:create:error', @newUserError
 
   newDocument: (data) ->
     html = "
@@ -152,6 +153,8 @@ class App.Views.Popup
 
 
   newCaseError: (data) ->
+    $('.error-message-form').remove()
+    $('.inputfield-error').removeClass 'inputfield-error'
     for key, value of data.errors
       if key == 'title'
         $subjectTitle = $('#subject_title')
@@ -201,12 +204,12 @@ class App.Views.Popup
           </div>
         </div>
         <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
+          <div class='box-cell-wrapper' id='user_name'>
             <input class='inputfield' type='text' name='user[name]' placeholder='Name'>
           </div>
         </div>
         <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
+          <div class='box-cell-wrapper' id='user_email'>
             <input class='inputfield' type='text' name='user[email]' placeholder='E-mail'>
           </div>
         </div>
@@ -218,12 +221,12 @@ class App.Views.Popup
           </div>
         </div>
         <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
+          <div class='box-cell-wrapper' id='user_password'>
             <input class='inputfield' type='password' name='user[password]' placeholder='Password'>
           </div>
         </div>
         <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
+          <div class='box-cell-wrapper' id='user_password_confirmation'>
             <input class='inputfield' type='password' name='user[password_confirmation]' placeholder='Repeat password'>
           </div>
         </div>
@@ -240,6 +243,24 @@ class App.Views.Popup
 
     App.Vent.publish 'form:users:new', data
     App.Vent.publish 'popup:show:inline'
+
+
+  newUserError: (data) ->
+    $('.error-message-form').remove()
+    $('.inputfield-error').removeClass 'inputfield-error'
+    for key, value of data.errors
+      switch key
+        when 'name'
+          $div = $('#user_name')
+        when 'email'
+          $div = $('#user_email')
+        when 'password'
+          $div = $('#user_password')
+        when 'password_confirmation'
+          $div = $('#user_password_confirmation')
+
+      $div.find('input').addClass 'inputfield-error'
+      $div.append "<div class='error-message-form'>#{value}</div>"
 
 
   deleteUser: (data) ->
