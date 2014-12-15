@@ -2,6 +2,21 @@ class App.Models.Base
 
   constructor: (@root)->
     @urlRoot =  "#{App.ApiLocation}#{@root}/"
+    @setup()
+
+  setup: ->
+    $.ajaxSetup
+      statusCode:
+        401: ->
+          # Redirect to the login page.
+          console.log 'Unauthorized'
+          routie('/')
+
+        403: ->
+          # 403 -- Access denied
+          console.log 'Access denied'
+          routie('/')
+
 
   all: () ->
     $.ajax(
@@ -9,6 +24,8 @@ class App.Models.Base
       type: 'GET'
       dataType: 'json'
       crossDomain: true
+      beforeSend: (xhr) ->
+        xhr.setRequestHeader "X-AUTH-TOKEN", App.Session.authToken
     )
     .done( (data, textStatus, jqXHR) =>
       App.Vent.publish "model:#{@root}:all", data
