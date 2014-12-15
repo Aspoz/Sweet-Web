@@ -161,11 +161,11 @@ a {
 .btn-upload {
   margin-bottom: 40px;
   margin-top: 20px;
-  width: 100%;
+  width: 100px;
 }
 
 .box-wrapper {
-  width: 205px;
+  width: 460px;
   background-color: white;
   margin: auto;
   display: table;
@@ -173,12 +173,23 @@ a {
   overflow: hidden;
   padding: 0 40px 20px; }
 
+.wide-box-wrapper {
+  width: 540px; }
+
+.line {
+  height: 60px;
+  width: 1px;
+  display: block;
+  background-color: #ecf0f1;
+  float: left;
+  margin-top: 25px;
+  margin-right: -1px; }
+
 .box-row-wrapper {
   display: table-row; }
 
 .box-cell-wrapper {
   display: table-cell;
-  width: 205px;
   padding: 0;
   margin: 0 auto;
   text-align: center;}
@@ -343,7 +354,7 @@ input[type=text], input[type=password] {
 
 .inputfield {
   height: 31px;
-  width: 206px;
+  width: 100%;
   margin-bottom: 10px;
   border-radius: 4px;
   border: 1px solid;
@@ -391,6 +402,21 @@ input[type=text], input[type=password] {
 
 .case-type-button input[type=radio] {
   margin: 0 17px; }
+
+.case-status-wrapper, .case-type-wrapper {
+  display: block;
+  width: 230px;
+  box-sizing: border-box; }
+
+.case-status-wrapper {
+  float: right;
+  padding-left: 19px;
+  padding-bottom: 20px; }
+
+.case-type-wrapper {
+  float: left;
+  padding-right: 20px;
+  padding-bottom: 20px; }
 
 .login-background {
   background: url("../images/background.jpg");
@@ -514,16 +540,23 @@ input[type=text], input[type=password] {
     -moz-transform: translateY(0px); } }
 
 // Dropzone
-.dz-error-mark, .dz-progress, .dz-success-mark {
+.dz-error-mark, .dz-success-mark, .dz-error-message {
   display: none; }
+
+.dz-upload {
+  display: block;
+  background-color: red;
+  height: 10px;
+  width: 0%; }
+
 .dz-message {
-  border: 1px solid #e5e5e5;
+  border: 1px dashed #4a90e2;
   border-radius: 4px;
   cursor: pointer;
-  padding: 20px;
+  padding: 60px 20px;
 }
 .dz-message:hover {
-  background-color: #eee;
+  background-color: #fafafa;
 }
 
 // MY STUFF
@@ -540,7 +573,7 @@ input[type=text], input[type=password] {
   position: relative;
   background: #FFF;
   width: auto;
-  max-width: 300px;
+  max-width: 600px;
   margin: 20px auto;
   border-radius: 8px;
 }

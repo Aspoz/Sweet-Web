@@ -88,53 +88,46 @@ class App.Views.Popup
         </div>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper' id='subject_title'>
-            <input class='inputfield' type='text' name='subject[title]' value='' placeholder='Case name'>
+            <input class='inputfield' type='text' name='subject[title]' placeholder='Case name'>
           </div>
         </div>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
-            <div class='step-title'>
-              What type is the Case?
+            <div class='case-type-wrapper'>
+              <div class='step-title'>
+                What is the status of the case?
+              </div>
+              <div class='case-type-button'>
+                <input id='RFA' type='radio' name='subject[casetype]' value='RFA' checked='checked'><br>
+                <label for='RFA'>RFA</label>
+              </div>
+              <div class='case-type-button'>
+                <input id='NFI' type='radio' name='subject[casetype]' value='NFI'><br>
+                <label for='NFI'>NFI</label>
+              </div>
+              <div class='case-type-button'>
+                <input id='RFC' type='radio' name='subject[casetype]' value='RFC'><br>
+                <label for='RFC'>RFC</label>
+              </div>
+              <div class='case-type-button'>
+                <input id='info' type='radio' name='subject[casetype]' value='Info'><br>
+                <label for='info'>Info</label>
+              </div>
             </div>
-          </div>
-        </div>
-        <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
-            <div class='case-type-button'>
-              <input id='RFA' type='radio' name='subject[casetype]' value='RFA' checked='checked'><br>
-              <label for='RFA'>RFA</label>
-            </div>
-            <div class='case-type-button'>
-              <input id='NFI' type='radio' name='subject[casetype]' value='NFI'><br>
-              <label for='NFI'>NFI</label>
-            </div>
-            <div class='case-type-button'>
-              <input id='RFC' type='radio' name='subject[casetype]' value='RFC'><br>
-              <label for='RFC'>RFC</label>
-            </div>
-            <div class='case-type-button'>
-              <input id='info' type='radio' name='subject[casetype]' value='info'><br>
-              <label for='info'>info</label>
-            </div>
-          </div>
-        </div>
-        <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
-            <div class='step-title'>
-              What status is the Case?
-            </div>
-          </div>
-        </div>
-        <div class='box-row-wrapper'>
-          <div class='box-cell-wrapper'>
-            <div class='case-status-button'>
-              <input id='open' type='radio' name='subject[status]' value='Open' checked='checked'>
-              <label for='open'>Open</label>
-            </div>
+            <div class='line'></div>
+            <div class='case-status-wrapper'>
+              <div class='step-title'>
+                What status is the Case?
+              </div>
+                <div class='case-status-button'>
+                <input id='open' type='radio' name='subject[status]' value='Open' checked='checked'>
+                <label for='open'>open</label>
+              </div>
 
-            <div class='case-status-button'>
-              <input id='in-progress' type='radio' name='subject[status]' value='In progress'>
-              <label for='in-progress'>In progress</label>
+              <div class='case-status-button'>
+                <input id='in-progress' type='radio' name='subject[status]' value='In progress'>
+                <label for='in-progress'>in progress</label>
+              </div>
             </div>
           </div>
         </div>
@@ -199,7 +192,7 @@ class App.Views.Popup
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='box-title'>
-              INVITE USER
+              ADD USER
             </div>
           </div>
         </div>
@@ -233,7 +226,7 @@ class App.Views.Popup
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <input type='hidden' name='user[group_id]' value='0'>
-            <input type='submit' value='INVITE' class='green-button-square'>
+            <input type='submit' value='CREATE' class='green-button-square'>
           </div>
         </div>
       </form>
