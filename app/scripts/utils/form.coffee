@@ -33,23 +33,19 @@ class App.Util.Form
           e.stopPropagation()
           @processQueue()
 
-        @on 'sending', ->
-          # Gets triggered when the form is actually being sent.
-          # Hide the success button or the complete form.
-
         @off 'success'
         @on 'success', (files, response) ->
           App.Vent.publish 'model:documents:create', response
 
+        @off 'error'
         @on 'error', (files, response) ->
           # Gets triggered when there was an error sending the files.
           # Maybe show form again, and notify user of error
           console.log files, response
 
+        @off 'complete'
         @on "complete", (file) ->
-           if @getUploadingFiles().length is 0 and @getQueuedFiles().length is 0
-            # m = new App.Models.Case
-            # m.find data.subject_id
+          if @getUploadingFiles().length is 0 and @getQueuedFiles().length is 0
             $.magnificPopup.close()
     )
 
