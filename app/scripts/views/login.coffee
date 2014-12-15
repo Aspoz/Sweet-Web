@@ -43,8 +43,10 @@ class App.Views.Login
 
   logIn: (data) =>
     if data.success
-      routie '/cases'
-      # TODO: session management
+      if data.group_id == 1
+        App.Session.authToken = data.access_token
+        App.Session.isLoggedIn = true
+        routie '/cases'
     else
       message = @regions.wrap.find '.error-message-login'
       input = @regions.wrap.find '.inputfield'
