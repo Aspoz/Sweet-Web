@@ -79,4 +79,4 @@ class App.Views.CaseIndex extends App.Views.List
     @regions.buttons.delete.html(html)
 
   removeItem: (data) ->
-    $(".case[data-id=#{data.id}]").fadeOut(300)
+    $(".case[data-id=#{data.id}]").fadeOut(200)
