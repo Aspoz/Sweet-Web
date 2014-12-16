@@ -28,7 +28,7 @@ class App.Views.UserIndex extends App.Views.List
 
   listItem: (item) ->
     li = "
-      <li class='case' data-id='#{item.id}' data-name='#{item.name}'>
+      <li class='case' data-id='#{item.id}' data-name='#{item.name}' data-email='#{item.email}' data-group='#{item.group_id}'>
         <div class='case-name'><a href='#/users/#{item.id}'>#{item.name}</a></div>
         <div class='case-type'>#{item.email}</div>
         <div class='case-status'>#{item.id}</div>
@@ -71,7 +71,7 @@ class App.Views.UserIndex extends App.Views.List
     @regions.buttons.new.html(html)
 
   renderButtonEdit: (data) ->
-    html = "<a class='button-edit grey-button-round popup-inline' data-user_id='#{data.id}' data-user_name='#{data.name}' href='#/users/edit'><img src='images/button-edit.png' alt=''></a>"
+    html = "<a class='button-edit grey-button-round popup-inline' data-user_id='#{data.id}' data-user_name='#{data.name}' data-user_email='#{data.email}' data-user_group='#{data.group}' href='#/users/edit'><img src='images/button-edit.png' alt=''></a>"
     @regions.buttons.edit.html(html)
 
   renderButtonDelete: (data) ->

@@ -18,6 +18,7 @@ class App.Util.Form
     @events.push App.Vent.subscribe 'form:cases:delete', @deleteCase
     @events.push App.Vent.subscribe 'form:sessions:new', @newSession
     @events.push App.Vent.subscribe 'form:users:new', @newUser
+    @events.push App.Vent.subscribe 'form:users:edit', @editUser
     @events.push App.Vent.subscribe 'form:users:delete', @deleteUser
 
   newDocument: (data) ->
@@ -102,6 +103,16 @@ class App.Util.Form
       m = new App.Models.User
       e.preventDefault()
       m.create $(this).serialize()
+
+  editUser: (data) ->
+    App.Vent.subscribe 'model:users:update', (data) ->
+      $.magnificPopup.close()
+
+    $(document.body).off 'submit', '#form-user-edit'
+    $(document.body).on 'submit', '#form-user-edit', (e) ->
+      m = new App.Models.User
+      e.preventDefault()
+      m.update data.user_id, $(this).serialize()
 
   deleteUser: (data) ->
     $(document.body).off 'click', '#popup-confirm-yes'
