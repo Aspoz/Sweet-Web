@@ -12,10 +12,38 @@ class App.Views.Popup.Case
 
   addListeners: () ->
     App.Vent.subscribe 'popup:cases:new', @newCaseForm
+    App.Vent.subscribe 'popup:cases:edit', @editCaseForm
     App.Vent.subscribe 'popup:cases:delete', @deleteCaseForm
     App.Vent.subscribe 'model:cases:create:error', @newCaseError
 
-  newCaseForm: (data) ->
+  casetype: (casetype = '') ->
+    types = ['RFA','NFI','RFC','Info']
+    html = ''
+    for type, i in types
+      checked = if type is casetype or casetype.length is 0 and i is 0 then "checked='checked'" else ''
+      html += "
+        <div class='case-type-button'>
+          <input id='#{type}' type='radio' name='subject[casetype]' value='#{type}' #{checked}><br>
+          <label for='#{type}'>#{type}</label>
+        </div>
+      "
+    return html
+
+  casestatus: (casestatus = '') ->
+    stati = ['Open', 'In progress', 'Closed']
+    html = ''
+    for status, i in stati
+      checked = if status is casestatus or casestatus.length is 0 and i is 0 then "checked='checked'" else ''
+      html += "
+        <div class='case-status-button'>
+          <input id='#{status}' type='radio' name='subject[status]' value='#{status}' #{checked}>
+          <label for='#{status}'>#{status}</label>
+        </div>
+      "
+    return html
+
+
+  newCaseForm: (data) =>
     html = "
     <div class='box-wrapper'>
       <form id='form-case-new' action='#{App.ApiLocation}cases' method='post'>
@@ -44,37 +72,14 @@ class App.Views.Popup.Case
               <div class='step-title'>
                 What is the status of the case?
               </div>
-              <div class='case-type-button'>
-                <input id='RFA' type='radio' name='subject[casetype]' value='RFA' checked='checked'><br>
-                <label for='RFA'>RFA</label>
-              </div>
-              <div class='case-type-button'>
-                <input id='NFI' type='radio' name='subject[casetype]' value='NFI'><br>
-                <label for='NFI'>NFI</label>
-              </div>
-              <div class='case-type-button'>
-                <input id='RFC' type='radio' name='subject[casetype]' value='RFC'><br>
-                <label for='RFC'>RFC</label>
-              </div>
-              <div class='case-type-button'>
-                <input id='info' type='radio' name='subject[casetype]' value='Info'><br>
-                <label for='info'>Info</label>
-              </div>
+              #{@casetype()}
             </div>
             <div class='line'></div>
             <div class='case-status-wrapper'>
               <div class='step-title'>
                 What status is the Case?
               </div>
-                <div class='case-status-button'>
-                <input id='open' type='radio' name='subject[status]' value='Open' checked='checked'>
-                <label for='open'>open</label>
-              </div>
-
-              <div class='case-status-button'>
-                <input id='in-progress' type='radio' name='subject[status]' value='In progress'>
-                <label for='in-progress'>in progress</label>
-              </div>
+              #{@casestatus()}
             </div>
           </div>
         </div>
@@ -99,6 +104,59 @@ class App.Views.Popup.Case
         $subjectTitle = $('#subject_title')
         $subjectTitle.find('input').addClass 'inputfield-error'
         $subjectTitle.append "<div class='error-message-form'>#{value}</div>"
+
+  editCaseForm: (data) =>
+    html = "
+    <div class='box-wrapper'>
+      <form id='form-case-edit' action='#{App.ApiLocation}cases/#{data.case_id}' method='post'>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='box-title'>
+              EDIT CASE
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='step-title'>
+              What is the name of the Case?
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper' id='subject_title'>
+            <input class='inputfield' type='text' name='subject[title]' placeholder='Case name' value='#{data.case_title}'>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <div class='case-type-wrapper'>
+              <div class='step-title'>
+                What is the status of the case?
+              </div>
+              #{@casetype data.case_type}
+            </div>
+            <div class='line'></div>
+            <div class='case-status-wrapper'>
+              <div class='step-title'>
+                What status is the Case?
+              </div>
+              #{@casestatus data.case_status}
+            </div>
+          </div>
+        </div>
+        <div class='box-row-wrapper'>
+          <div class='box-cell-wrapper'>
+            <input type='hidden' name='_method' value='put'>
+            <input type='submit' value='EDIT' class='green-button-square'>
+          </div>
+        </div>
+      </form>
+    </div>
+    "
+    $('#jst-popup').html(html)
+    App.Vent.publish 'form:cases:edit', data
+    App.Vent.publish 'popup:show:inline'
 
   deleteCaseForm: (data) ->
     html = "

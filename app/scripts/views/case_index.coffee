@@ -14,6 +14,7 @@ class App.Views.CaseIndex extends App.Views.List
   addListeners: () ->
     @events.push App.Vent.subscribe 'model:cases:all', @render
     @events.push App.Vent.subscribe 'model:cases:create', @prependItem
+    @events.push App.Vent.subscribe 'model:cases:update', @updateItem
     @events.push App.Vent.subscribe 'model:cases:destroy', @removeItem
     @events.push App.Vent.subscribe 'view:list:btns', @editDeleteButtons
     @events.push App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
@@ -28,7 +29,7 @@ class App.Views.CaseIndex extends App.Views.List
 
   listItem: (item) ->
     li = "
-      <li class='case' data-id='#{item.id}' data-title='#{item.title}'>
+      <li class='case' data-id='#{item.id}' data-title='#{item.title}' data-casetype='#{item.casetype}' data-status='#{item.status}'>
         <div class='case-name'><a href='#/cases/#{item.id}'>#{item.title}</a></div>
         <div class='case-type'>#{item.casetype}</div>
         <div class='case-status'>#{item.status}</div>
@@ -71,7 +72,7 @@ class App.Views.CaseIndex extends App.Views.List
     @regions.buttons.new.html(html)
 
   renderButtonEdit: (data) ->
-    html = "<a class='button-edit grey-button-round popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/edit'><img src='images/button-edit.png' alt=''></a>"
+    html = "<a class='button-edit grey-button-round popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' data-case_type='#{data.casetype}' data-case_status='#{data.status}' href='#/cases/edit'><img src='images/button-edit.png' alt=''></a>"
     @regions.buttons.edit.html(html)
 
   renderButtonDelete: (data) ->
@@ -80,3 +81,6 @@ class App.Views.CaseIndex extends App.Views.List
 
   removeItem: (data) ->
     $(".case[data-id=#{data.id}]").fadeOut(200)
+
+  updateItem: (data) ->
+    console.log data

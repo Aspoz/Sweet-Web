@@ -70,14 +70,12 @@ class App.Models.Base
       type: 'POST'
       dataType: 'json'
       crossDomain: true
-      data:
-        _method: 'put'
+      data: attr
       beforeSend: (xhr) ->
         xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:update", data
-      console.log data
     )
     .fail (jqXHR, textStatus, errorThrown) =>
       App.Vent.publish "model:#{@root}:update:error", jqXHR.responseJSON

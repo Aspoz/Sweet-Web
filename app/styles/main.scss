@@ -165,7 +165,7 @@ a {
 }
 
 .box-wrapper {
-  width: 460px;
+  width: 540px;
   background-color: white;
   margin: auto;
   display: table;
@@ -385,7 +385,7 @@ input[type=text], input[type=password] {
 
 .case-status-button {
   float: left;
-  width: 50%; }
+  width: 33%; }
 
 .case-status-button label, .case-type-button label {
   text-align: center;
@@ -397,15 +397,13 @@ input[type=text], input[type=password] {
   visibility: none;
   cursor: pointer; }
 
-.case-status-button input[type=radio] {
-  margin: 0 44px; }
+.case-status-button input[type=radio] {}
 
-.case-type-button input[type=radio] {
-  margin: 0 17px; }
+.case-type-button input[type=radio] {}
 
 .case-status-wrapper, .case-type-wrapper {
   display: block;
-  width: 230px;
+  width: 270px;
   box-sizing: border-box; }
 
 .case-status-wrapper {
@@ -573,7 +571,7 @@ input[type=text], input[type=password] {
   position: relative;
   background: #FFF;
   width: auto;
-  max-width: 600px;
+  max-width: 620px;
   margin: 20px auto;
   border-radius: 8px;
 }
