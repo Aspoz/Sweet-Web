@@ -44,6 +44,7 @@ class App.Views.Login
   logIn: (data) =>
     if data.success
       if data.group_id == 1
+        App.Session.userId = data.user_id
         App.Session.authToken = data.access_token
         App.Session.isLoggedIn = true
         routie '/cases'
