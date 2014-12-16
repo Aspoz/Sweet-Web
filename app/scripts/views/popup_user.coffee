@@ -65,7 +65,7 @@ class App.Views.Popup.User
     </div>
     "
     $('#jst-popup').html(html)
-    App.Vent.publish 'form:users:edit', data
+    App.Vent.publish 'form:users:new', data
     App.Vent.publish 'popup:show:inline'
 
   editForm: (data) ->

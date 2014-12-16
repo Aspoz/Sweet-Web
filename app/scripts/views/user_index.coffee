@@ -14,6 +14,7 @@ class App.Views.UserIndex extends App.Views.List
   addListeners: () ->
     @events.push App.Vent.subscribe 'model:users:all', @render
     @events.push App.Vent.subscribe 'model:users:create', @appendItem
+    @events.push App.Vent.subscribe 'model:users:update', @updateItem
     @events.push App.Vent.subscribe 'model:users:destroy', @removeItem
     @events.push App.Vent.subscribe 'view:list:btns', @editDeleteButtons
     @events.push App.Vent.subscribe 'view:list:btns:remove', @editDeleteButtonsDelete
@@ -79,4 +80,16 @@ class App.Views.UserIndex extends App.Views.List
     @regions.buttons.delete.html(html)
 
   removeItem: (data) ->
-    $(".case[data-id=#{data.id}]").fadeOut(300)
+    $(".case[data-id=#{data.id}]").fadeOut(200)
+
+  updateItem: (data) =>
+    $el = $(".case[data-id=#{data.id}]")
+    $el.removeClass 'highlight'
+    $el.data 'name', data.name
+    $el.data 'email', data.email
+    $el.data 'group', data.group_id
+
+    $el.find('.case-name').html("<a href='#/users/#{data.id}'>#{data.name}</a>")
+    $el.find('.case-type').html(data.email)
+    $el.find('.case-status').html(data.id)
+    @editDeleteButtonsDelete()
