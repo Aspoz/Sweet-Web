@@ -14,7 +14,8 @@ class App.Views.Popup.Case
     App.Vent.subscribe 'popup:cases:new', @newCaseForm
     App.Vent.subscribe 'popup:cases:edit', @editCaseForm
     App.Vent.subscribe 'popup:cases:delete', @deleteCaseForm
-    App.Vent.subscribe 'model:cases:create:error', @newCaseError
+    App.Vent.subscribe 'model:cases:create:error', @caseError
+    App.Vent.subscribe 'model:cases:update:error', @caseError
 
   casetype: (casetype = '') ->
     types = ['RFA','NFI','RFC','Info']
@@ -96,7 +97,7 @@ class App.Views.Popup.Case
     App.Vent.publish 'popup:show:inline'
 
 
-  newCaseError: (data) ->
+  caseError: (data) ->
     $('.error-message-form').remove()
     $('.inputfield-error').removeClass 'inputfield-error'
     for key, value of data.errors
