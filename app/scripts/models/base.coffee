@@ -9,12 +9,12 @@ class App.Models.Base
       statusCode:
         401: ->
           # Redirect to the login page.
-          console.log 'Unauthorized'
+          App.Vent.publish 'sessions:auth:fail'
           routie('/')
 
         403: ->
           # 403 -- Access denied
-          console.log 'Access denied'
+          App.Vent.publish 'sessions:auth:fail'
           routie('/')
 
 
@@ -25,7 +25,7 @@ class App.Models.Base
       dataType: 'json'
       crossDomain: true
       beforeSend: (xhr) ->
-        xhr.setRequestHeader "X-AUTH-TOKEN", App.Session.authToken
+        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data, textStatus, jqXHR) =>
       App.Vent.publish "model:#{@root}:all", data
@@ -39,6 +39,8 @@ class App.Models.Base
       type: 'GET'
       dataType: 'json'
       crossDomain: true
+      beforeSend: (xhr) ->
+        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:find", data
@@ -53,6 +55,8 @@ class App.Models.Base
       dataType: 'json'
       crossDomain: true
       data: attr
+      beforeSend: (xhr) ->
+        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:create", data
@@ -68,6 +72,8 @@ class App.Models.Base
       crossDomain: true
       data:
         _method: 'put'
+      beforeSend: (xhr) ->
+        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:update", data
@@ -84,6 +90,8 @@ class App.Models.Base
       crossDomain: true
       data:
         _method: 'delete'
+      beforeSend: (xhr) ->
+        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:destroy", id: id
