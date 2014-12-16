@@ -88,7 +88,7 @@ class App.Views.CaseIndex extends App.Views.List
     $el.data 'casetype', data.casetype
     $el.data 'status', data.status
 
-    $el.find('.case-name').html(data.title)
+    $el.find('.case-name').html("<a href='#/cases/#{data.id}'>#{data.title}</a>")
     $el.find('.case-type').html(data.casetype)
     $el.find('.case-status').html(data.status)
     @editDeleteButtonsDelete()
