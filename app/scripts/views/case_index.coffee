@@ -82,5 +82,13 @@ class App.Views.CaseIndex extends App.Views.List
   removeItem: (data) ->
     $(".case[data-id=#{data.id}]").fadeOut(200)
 
-  updateItem: (data) ->
-    console.log data
+  updateItem: (data) =>
+    $el = $(".case[data-id=#{data.id}]")
+    $el.data 'title', data.title
+    $el.data 'casetype', data.casetype
+    $el.data 'status', data.status
+
+    $el.find('.case-name').html(data.title)
+    $el.find('.case-type').html(data.casetype)
+    $el.find('.case-status').html(data.status)
+    @editDeleteButtonsDelete()
