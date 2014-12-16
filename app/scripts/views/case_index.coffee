@@ -84,6 +84,7 @@ class App.Views.CaseIndex extends App.Views.List
 
   updateItem: (data) =>
     $el = $(".case[data-id=#{data.id}]")
+    $el.removeClass 'highlight'
     $el.data 'title', data.title
     $el.data 'casetype', data.casetype
     $el.data 'status', data.status
