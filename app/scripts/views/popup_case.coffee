@@ -11,11 +11,11 @@ class App.Views.Popup.Case
       App.Vent.unsubscribe e
 
   addListeners: () ->
-    App.Vent.subscribe 'popup:cases:new', @newCaseForm
-    App.Vent.subscribe 'popup:cases:edit', @editCaseForm
-    App.Vent.subscribe 'popup:cases:delete', @deleteCaseForm
-    App.Vent.subscribe 'model:cases:create:error', @caseError
-    App.Vent.subscribe 'model:cases:update:error', @caseError
+    App.Vent.subscribe 'popup:cases:new', @newForm
+    App.Vent.subscribe 'popup:cases:edit', @editForm
+    App.Vent.subscribe 'popup:cases:delete', @deleteForm
+    App.Vent.subscribe 'model:cases:create:error', @showError
+    App.Vent.subscribe 'model:cases:update:error', @showError
 
   casetype: (casetype = '') ->
     types = ['RFA','NFI','RFC','Info']
@@ -44,7 +44,7 @@ class App.Views.Popup.Case
     return html
 
 
-  newCaseForm: (data) =>
+  newForm: (data) =>
     html = "
     <div class='box-wrapper'>
       <form id='form-case-new' action='#{App.ApiLocation}cases' method='post'>
@@ -97,7 +97,7 @@ class App.Views.Popup.Case
     App.Vent.publish 'popup:show:inline'
 
 
-  caseError: (data) ->
+  showError: (data) ->
     $('.error-message-form').remove()
     $('.inputfield-error').removeClass 'inputfield-error'
     for key, value of data.errors
@@ -106,7 +106,7 @@ class App.Views.Popup.Case
         $subjectTitle.find('input').addClass 'inputfield-error'
         $subjectTitle.append "<div class='error-message-form'>#{value}</div>"
 
-  editCaseForm: (data) =>
+  editForm: (data) =>
     html = "
     <div class='box-wrapper'>
       <form id='form-case-edit' action='#{App.ApiLocation}cases/#{data.case_id}' method='post'>
@@ -159,7 +159,7 @@ class App.Views.Popup.Case
     App.Vent.publish 'form:cases:edit', data
     App.Vent.publish 'popup:show:inline'
 
-  deleteCaseForm: (data) ->
+  deleteForm: (data) ->
     html = "
     <div class='box-wrapper'>
       <div class='box-row-wrapper'>
