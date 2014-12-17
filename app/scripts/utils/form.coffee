@@ -67,7 +67,7 @@ class App.Util.Form
     $(document.body).on 'submit', '#form-case-new', (e) ->
       m = new App.Models.Case
       e.preventDefault()
-      m.create $(this).serialize()
+      m.create $(this).serializeObject()
 
   editCase: (data) ->
     App.Vent.subscribe 'model:cases:update', (data) ->
@@ -77,7 +77,7 @@ class App.Util.Form
     $(document.body).on 'submit', '#form-case-edit', (e) ->
       m = new App.Models.Case
       e.preventDefault()
-      m.update data.case_id, $(this).serialize()
+      m.update data.case_id, $(this).serializeObject()
 
   deleteCase: (data) ->
     $(document.body).off 'click', '#popup-confirm-yes'
@@ -92,7 +92,7 @@ class App.Util.Form
     $(document.body).on 'submit', '#form-login', (e) ->
       e.preventDefault()
       m = new App.Models.Session
-      m.create $(this).serialize()
+      m.create $(this).serializeObject()
 
   newUser: (data) ->
     App.Vent.subscribe 'model:users:create', (data) ->
@@ -102,7 +102,7 @@ class App.Util.Form
     $(document.body).on 'submit', '#form-user-new', (e) ->
       m = new App.Models.User
       e.preventDefault()
-      m.create $(this).serialize()
+      m.create $(this).serializeObject()
 
   editUser: (data) ->
     App.Vent.subscribe 'model:users:update', (data) ->
@@ -112,7 +112,7 @@ class App.Util.Form
     $(document.body).on 'submit', '#form-user-edit', (e) ->
       m = new App.Models.User
       e.preventDefault()
-      m.update data.user_id, $(this).serialize()
+      m.update data.user_id, $(this).serializeObject()
 
   deleteUser: (data) ->
     $(document.body).off 'click', '#popup-confirm-yes'
