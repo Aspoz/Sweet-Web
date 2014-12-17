@@ -42,14 +42,14 @@ class App.Views.Login
 
   logIn: (data) =>
     if data.success
+      App.Session.userId = data.user_id
+      App.Session.authToken = data.access_token
+      App.Session.isLoggedIn = true
+
       if data.group_id == 1
-        App.Session.userId = data.user_id
-        App.Session.authToken = data.access_token
-        App.Session.isLoggedIn = true
         routie '/cases'
       else
-        App.Vent.publish 'sessions:auth:fail'
-        routie('/')
+        routie('/logout')
     else
       message = @regions.wrap.find '.error-message-login'
       input = @regions.wrap.find '.inputfield'
