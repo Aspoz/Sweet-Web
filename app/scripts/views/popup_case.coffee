@@ -71,14 +71,14 @@ class App.Views.Popup.Case
           <div class='box-cell-wrapper'>
             <div class='case-type-wrapper'>
               <div class='step-title'>
-                What is the status of the case?
+                What is the type of the case?
               </div>
               #{@casetype()}
             </div>
             <div class='line'></div>
             <div class='case-status-wrapper'>
               <div class='step-title'>
-                What status is the Case?
+                What is the status of the Case?
               </div>
               #{@casestatus()}
             </div>
@@ -133,14 +133,14 @@ class App.Views.Popup.Case
           <div class='box-cell-wrapper'>
             <div class='case-type-wrapper'>
               <div class='step-title'>
-                What is the status of the case?
+                What is the type of the case?
               </div>
               #{@casetype data.case_type}
             </div>
             <div class='line'></div>
             <div class='case-status-wrapper'>
               <div class='step-title'>
-                What status is the Case?
+                What is the status of the Case?
               </div>
               #{@casestatus data.case_status}
             </div>
