@@ -8,12 +8,16 @@ window.App =
   ApiLocation: 'http://178.62.204.157/'
 
   initialize: ->
+    @navHelper()
     @cookieHelper()
     @templateEngine()
     @popupHelper()
     @formHelper()
     @setSessionDefaults()
     @router()
+
+  navHelper: ->
+    n = new App.Util.Nav
 
   cookieHelper: ->
     c = new App.Util.Cookie
