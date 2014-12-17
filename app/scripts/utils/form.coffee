@@ -28,6 +28,8 @@ class App.Util.Form
       uploadMultiple: false
       parallelUploads: 10
       maxFiles: 50
+      headers:
+        "Authorization": "Token token=#{App.Session.authToken}"
 
       init: ->
         $(@element).find('button[type=submit]').on 'click', (e) =>
