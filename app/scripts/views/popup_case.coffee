@@ -86,7 +86,7 @@ class App.Views.Popup.Case
         </div>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
-            <input type='submit' value='CREATE' class='green-button-square'>
+            <input type='submit' value='ADD CASE' class='button-square green-button-square'>
           </div>
         </div>
       </form>
@@ -148,7 +148,7 @@ class App.Views.Popup.Case
         </div>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
-            <input type='submit' value='EDIT' class='green-button-square'>
+            <input type='submit' value='EDIT CASE' class='button-square green-button-square'>
           </div>
         </div>
       </form>
@@ -177,8 +177,8 @@ class App.Views.Popup.Case
       </div>
       <div class='box-row-wrapper'>
         <div class='box-cell-wrapper'>
-            <a class='grey-button-square left' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
-            <a class='red-button-square right' id='popup-confirm-yes' href='#/cases/delete/yes'>DELETE</a>
+            <a class='button-square grey-button-square' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
+            <a class='button-square red-button-square' id='popup-confirm-yes' href='#/cases/delete/yes'>DELETE</a>
         </div>
       </div>
     </div>

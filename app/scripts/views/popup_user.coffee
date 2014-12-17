@@ -19,7 +19,7 @@ class App.Views.Popup.User
 
   newForm: (data) ->
     html = "
-    <div class='box-wrapper'>
+    <div class='box-wrapper popup-user-wrapper'>
       <form id='form-user-new' action='#{App.ApiLocation}users' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
@@ -41,7 +41,7 @@ class App.Views.Popup.User
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='step-title'>
-              Password must contain aleast 6 characters with one lower case letter, one upper case letter and one digit or symbol
+              Password must contain at least 6 characters, one upper case letter and one digit.
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@ class App.Views.Popup.User
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <input type='hidden' name='user[group_id]' value='2'>
-            <input type='submit' value='CREATE' class='green-button-square'>
+            <input type='submit' value='CREATE USER' class='button-square green-button-square'>
           </div>
         </div>
       </form>
@@ -70,7 +70,7 @@ class App.Views.Popup.User
 
   editForm: (data) ->
     html = "
-    <div class='box-wrapper'>
+    <div class='box-wrapper popup-user-wrapper'>
       <form id='form-user-edit' action='#{App.ApiLocation}users/#{data.user_id}' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
@@ -92,7 +92,7 @@ class App.Views.Popup.User
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='step-title'>
-              Password must contain aleast 6 characters with one lower case letter, one upper case letter and one digit or symbol
+              Password must contain at least 6 characters, one upper case letter and one digit.
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@ class App.Views.Popup.User
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <input type='hidden' name='user[group_id]' value='#{data.user_group}'>
-            <input type='submit' value='EDIT' class='green-button-square'>
+            <input type='submit' value='EDIT USER' class='button-square green-button-square'>
           </div>
         </div>
       </form>
@@ -157,8 +157,8 @@ class App.Views.Popup.User
       </div>
       <div class='box-row-wrapper'>
         <div class='box-cell-wrapper'>
-            <a class='grey-button-square left' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
-            <a class='red-button-square right' id='popup-confirm-yes' href='#/users/delete/yes'>DELETE</a>
+            <a class='button-square grey-button-square' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
+            <a class='button-square red-button-square' id='popup-confirm-yes' href='#/users/delete/yes'>DELETE</a>
         </div>
       </div>
     </div>

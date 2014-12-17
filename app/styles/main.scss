@@ -3,7 +3,8 @@
 
 html {
   letter-spacing: 0.25px;
-  font-family: Lato, sans-serif; }
+  font-family: Lato, sans-serif;
+  line-height: 1.4; }
 
 h1 {
   font-size: 1.5em;
@@ -76,23 +77,27 @@ a {
   .red-button-round:active {
     background-color: #f06143; }
 
-.blue-button-square, .green-button-square, .red-button-square, .grey-button-square {
-  height: 33px;
-  width: 74px;
+.button-square {
+  display: inline-block;
+  height: 32px;
+  padding: 0 15px;
   margin-top: 10px;
   margin-bottom: 10px;
   line-height: 32px;
   border-radius: 4px;
   color: white;
   text-align: center;
-  border: 0 none;
-  font-size: 0.875em;
+  border: none;
+  font-size: 1em;
   border-radius: 4px;
   cursor: pointer;
-  font-weight: 600;
+  font-weight: 400;
   -moz-box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.3);
   text-decoration: none; }
+
+.button-square + .button-square {
+  margin-left: 50px; }
 
 .grey-button-square {
   background-color: #b2b8c5; }
@@ -163,7 +168,8 @@ a {
   margin-top: 20px;
   width: 100px;
 }
-
+.button-edit {
+  margin-left: 35px; }
 .box-wrapper {
   width: 540px;
   background-color: white;
@@ -175,6 +181,9 @@ a {
 
 .wide-box-wrapper {
   width: 540px; }
+
+.popup-user-wrapper {
+  width: 360px; }
 
 .line {
   height: 60px;
@@ -197,7 +206,6 @@ a {
 .step-title {
   font-style: italic;
   font-weight: 300;
-  font-size: 0.875em;
   color: #555555;
   margin: 15px 0;
   display: block;
@@ -453,7 +461,8 @@ input[type=text], input[type=password] {
 
 .error-message-form {
   color: #fb6d50;
-  font-style: italic; }
+  font-style: italic;
+  margin-bottom: 10px; }
 
 .error-message-username, .error-message-password {
   width: 195px;

@@ -30,7 +30,7 @@ class App.Views.Popup.Document
             <input type='hidden' name='document[subject_id]' value='#{data.subject_id}' />
             <input type='hidden' name='user_id' value='#{App.Session.userId}' />
             <div class='dz-message'>Drag &amp; Drop your file(s) or select it from a directory</div>
-            <button class='green-button-square btn-upload' type='submit'>UPLOAD</button>
+            <button class='button-square green-button-square btn-upload' type='submit'>UPLOAD</button>
           </form>
         </div>
       </div>
@@ -59,8 +59,8 @@ class App.Views.Popup.Document
       </div>
       <div class='box-row-wrapper'>
         <div class='box-cell-wrapper'>
-            <a class='grey-button-square left' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
-            <a class='red-button-square right' id='popup-confirm-yes' href='#/documents/delete/yes'>DELETE</a>
+            <a class='grey-button-square' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
+            <a class='red-button-square' id='popup-confirm-yes' href='#/documents/delete/yes'>DELETE</a>
         </div>
       </div>
     </div>"
