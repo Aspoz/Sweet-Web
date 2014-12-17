@@ -67,15 +67,15 @@ class App.Views.CaseIndex extends App.Views.List
     @regions.buttons.delete.html('')
 
   renderButtonNew: (data) ->
-    html = "<a class='button-upload blue-button-round popup-inline' href='#/cases/new'><img src='images/button-add.png' alt=''></a>"
+    html = "<a title='New Case' class='button-upload blue-button-round popup-inline' href='#/cases/new'><img src='images/button-add.png' alt='add'></a>"
     @regions.buttons.new.html(html)
 
   renderButtonEdit: (data) ->
-    html = "<a class='button-edit grey-button-round popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' data-case_type='#{data.casetype}' data-case_status='#{data.status}' href='#/cases/edit'><img src='images/button-edit.png' alt=''></a>"
+    html = "<a title='Edit Case' class='button-edit grey-button-round popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' data-case_type='#{data.casetype}' data-case_status='#{data.status}' href='#/cases/edit'><img src='images/button-edit.png' alt=''></a>"
     @regions.buttons.edit.html(html)
 
   renderButtonDelete: (data) ->
-    html = "<a class='button-delete red-button-round popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/delete'><img src='images/button-delete.png' alt=''></a>"
+    html = "<a title='Delete Case' class='button-delete red-button-round popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/delete'><img src='images/button-delete.png' alt=''></a>"
     @regions.buttons.delete.html(html)
 
   removeItem: (data) ->
