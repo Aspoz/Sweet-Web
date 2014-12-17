@@ -6,17 +6,20 @@ class App.Models.Base
 
   setup: ->
     $.ajaxSetup
+      complete: ->
+        App.Vent.publish 'template:spinner:hide'
+      beforeSend: (xhr) ->
+        App.Vent.publish 'template:spinner:show'
+        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
       statusCode:
         401: ->
           # Redirect to the login page.
           App.Vent.publish 'sessions:auth:fail'
           routie('/')
-
         403: ->
           # 403 -- Access denied
           App.Vent.publish 'sessions:auth:fail'
           routie('/')
-
 
   all: () ->
     $.ajax(
@@ -24,8 +27,6 @@ class App.Models.Base
       type: 'GET'
       dataType: 'json'
       crossDomain: true
-      beforeSend: (xhr) ->
-        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data, textStatus, jqXHR) =>
       App.Vent.publish "model:#{@root}:all", data
@@ -39,8 +40,6 @@ class App.Models.Base
       type: 'GET'
       dataType: 'json'
       crossDomain: true
-      beforeSend: (xhr) ->
-        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:find", data
@@ -55,8 +54,6 @@ class App.Models.Base
       dataType: 'json'
       crossDomain: true
       data: attr
-      beforeSend: (xhr) ->
-        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:create", data
@@ -71,8 +68,6 @@ class App.Models.Base
       dataType: 'json'
       crossDomain: true
       data: attr
-      beforeSend: (xhr) ->
-        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:update", data
@@ -88,8 +83,6 @@ class App.Models.Base
       crossDomain: true
       data:
         _method: 'delete'
-      beforeSend: (xhr) ->
-        xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:destroy", id: id

@@ -3,7 +3,10 @@ window.App =
   Views: {}
   Vent: PubSub
   Util: {}
-  Session: {}
+  Session:
+    userId: 0
+    authToken: ''
+    isLoggedIn: false
   # ApiLocation: 'http://localhost:3000/'
   ApiLocation: 'http://178.62.204.157/'
 

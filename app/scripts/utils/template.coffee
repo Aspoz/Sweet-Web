@@ -10,7 +10,6 @@ class App.Util.Template
     App.Vent.subscribe 'template:spinner:hide', @hideLoadingSpinner
 
   switchTemplate: (data) =>
-    @showLoadingSpinner()
     $('.jsp').removeClass('jsp-active')
     $("#jsp-#{data.page}").addClass('jsp-active')
 
