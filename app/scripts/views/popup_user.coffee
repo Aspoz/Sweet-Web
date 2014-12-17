@@ -109,7 +109,6 @@ class App.Views.Popup.User
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <input type='hidden' name='user[group_id]' value='#{data.user_group}'>
-            <input type='hidden' name='_method' value='put' />
             <input type='submit' value='EDIT' class='green-button-square'>
           </div>
         </div>

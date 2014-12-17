@@ -148,7 +148,6 @@ class App.Views.Popup.Case
         </div>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
-            <input type='hidden' name='_method' value='put'>
             <input type='submit' value='EDIT' class='green-button-square'>
           </div>
         </div>

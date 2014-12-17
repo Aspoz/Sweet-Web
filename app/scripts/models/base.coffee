@@ -48,6 +48,7 @@ class App.Models.Base
       App.Vent.publish "model:#{@root}:find:error", jqXHR.responseJSON
 
   create: (attr) ->
+    attr.user_id = App.Session.userId
     $.ajax(
       url: @urlRoot
       type: 'POST'
@@ -62,6 +63,8 @@ class App.Models.Base
       App.Vent.publish "model:#{@root}:create:error", jqXHR.responseJSON
 
   update: (id, attr) ->
+    attr.user_id = App.Session.userId
+    attr._method = 'PUT'
     $.ajax(
       url: @urlRoot + id
       type: 'POST'
@@ -83,6 +86,7 @@ class App.Models.Base
       crossDomain: true
       data:
         _method: 'delete'
+        user_id: App.Session.userId
     )
     .done( (data) =>
       App.Vent.publish "model:#{@root}:destroy", id: id
