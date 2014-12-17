@@ -29,7 +29,7 @@ class App.Views.CaseShow extends App.Views.List
     created_at = moment(item.created_at).format('DD MMM. YYYY')
     li = "
       <li class='case' data-id='#{item.id}' data-name='#{item.attachment_file_name}'>
-        <div class='case-name'><a href='//#{item.attachment_url}' target='blank'>#{item.attachment_file_name}</a></div>
+        <div class='case-name'><a class='popup-iframe' href='//#{item.attachment_url}' target='blank'>#{item.attachment_file_name}</a></div>
         <div class='case-type'>#{item.attachment_content_type}</div>
         <div class='case-status'>#{created_at}</div>
       </li>
@@ -75,7 +75,7 @@ class App.Views.CaseShow extends App.Views.List
 
   renderButtonEdit: (data) ->
     html = "<a class='button-edit grey-button-round popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/edit'><img src='images/button-edit.png' alt=''></a>"
-    @regions.buttons.edit.html(html)
+    @regions.buttons.edit.html('')
 
   renderButtonDelete: (data) ->
     html = "<a class='button-delete red-button-round popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/delete'><img src='images/button-delete.png' alt=''></a>"
