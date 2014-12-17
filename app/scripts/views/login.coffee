@@ -26,14 +26,14 @@ class App.Views.Login
 
     <form id='form-login' method='post' action='#{App.ApiLocation}sessions'>
       <p>
-        <input class='inputfield' type='text' name='email' value='' placeholder='Username or Email'>
+        <input class='inputfield' type='text' name='email' value='' placeholder='E-mail'>
       </p>
       <p>
         <input class='inputfield' type='password' name='password' value='' placeholder='Password'>
       </p>
       <p class='error-message-login'></p>
       <!--<p><a href='forgot-password.html'>Forgot password?</a></p>-->
-      <p><input type='submit' name='commit' value='LOGIN' class='blue-large-button-square'></p>
+      <p><input type='submit' name='commit' value='LOG IN' class='blue-large-button-square'></p>
     </form>
     "
 

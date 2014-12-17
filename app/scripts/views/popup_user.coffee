@@ -58,7 +58,7 @@ class App.Views.Popup.User
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <input type='hidden' name='user[group_id]' value='2'>
-            <input type='submit' value='CREATE USER' class='button-square green-button-square'>
+            <input type='submit' value='ADD USER' class='button-square green-button-square'>
           </div>
         </div>
       </form>
