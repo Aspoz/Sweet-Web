@@ -39,8 +39,8 @@ class App.Util.Router
           routie('/')
 
       '/logout': =>
+        App.Vent.publish 'cookie:delete:sessions'
         model =  new App.Models.Session
         model.destroy App.Session.authToken
-        App.Session = {}
         routie('/')
     )

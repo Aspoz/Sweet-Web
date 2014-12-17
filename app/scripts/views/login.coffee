@@ -47,9 +47,10 @@ class App.Views.Login
       App.Session.isLoggedIn = true
 
       if data.group_id == 1
+        App.Vent.publish 'cookie:set:sessions', App.Session
         routie '/cases'
       else
-        routie('/logout')
+        routie '/logout'
     else
       message = @regions.wrap.find '.error-message-login'
       input = @regions.wrap.find '.inputfield'
