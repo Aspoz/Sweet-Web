@@ -29,7 +29,7 @@ class App.Views.UserIndex extends App.Views.List
   listItem: (item) ->
     li = "
       <li class='case' data-id='#{item.id}' data-name='#{item.name}' data-email='#{item.email}' data-group='#{item.group_id}'>
-        <div class='case-name'><a href='#/users/#{item.id}'>#{item.name}</a></div>
+        <div class='case-name'>#{item.name}</div>
         <div class='case-type'>#{item.email}</div>
         <div class='case-status'>#{item.id}</div>
       </li>
@@ -88,7 +88,7 @@ class App.Views.UserIndex extends App.Views.List
     $el.data 'email', data.email
     $el.data 'group', data.group_id
 
-    $el.find('.case-name').html("<a href='#/users/#{data.id}'>#{data.name}</a>")
+    $el.find('.case-name').html(data.name)
     $el.find('.case-type').html(data.email)
     $el.find('.case-status').html(data.id)
     @editDeleteButtonsDelete()
