@@ -171,19 +171,19 @@ a {
 .button-edit {
   margin-left: 35px; }
 .box-wrapper {
-  width: 540px;
+  // width: 540px;
   background-color: white;
   margin: auto;
   display: table;
   border-radius: 8px;
   overflow: hidden;
-  padding: 0 40px 20px; }
+  padding: 0 50px 20px; }
 
 .wide-box-wrapper {
   width: 540px; }
 
 .popup-user-wrapper {
-  width: 360px; }
+  width: 340px; }
 
 .line {
   height: 60px;
@@ -221,6 +221,9 @@ a {
   color: #6e6e6e;
   text-align: center;
   border-radius: 8px 8px 0 0; }
+
+.box-title-user {
+  height: 70px; }
 
 html {
   height: 100%; }
@@ -340,31 +343,27 @@ body {
 
 input[type=text], input[type=password] {
   font-size: 14px;
-  padding-left: 3px; }
+  padding-left: 8px; }
 
 ::-webkit-input-placeholder {
   font-size: 14px;
-  overflow: visible;
-  padding-left: 3px; }
+  overflow: visible; }
 
 :-moz-placeholder {
   font-size: 14px;
-  overflow: visible;
-  padding-left: 3px; }
+  overflow: visible; }
 
 ::-moz-placeholder {
   font-size: 14px;
-  overflow: visible;
-  padding-left: 3px; }
+  overflow: visible; }
 
 :-ms-input-placeholder {
   font-size: 14px;
-  overflow: visible;
-  padding-left: 3px; }
+  overflow: visible; }
 
 .inputfield {
   height: 31px;
-  width: 100%;
+  width: 96%;
   margin-bottom: 10px;
   border-radius: 4px;
   border: 1px solid;
@@ -580,9 +579,6 @@ input[type=text], input[type=password] {
 
 .white-popup {
   position: relative;
-  background: #FFF;
-  width: auto;
-  max-width: 620px;
   margin: 20px auto;
   border-radius: 8px;
 }

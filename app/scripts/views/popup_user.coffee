@@ -23,7 +23,7 @@ class App.Views.Popup.User
       <form id='form-user-new' action='#{App.ApiLocation}users' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
-            <div class='box-title'>
+            <div class='box-title box-title-user'>
               ADD USER
             </div>
           </div>
@@ -74,7 +74,7 @@ class App.Views.Popup.User
       <form id='form-user-edit' action='#{App.ApiLocation}users/#{data.user_id}' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
-            <div class='box-title'>
+            <div class='box-title box-title-user'>
               EDIT USER
             </div>
           </div>
