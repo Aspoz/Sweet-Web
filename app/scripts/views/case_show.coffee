@@ -29,7 +29,7 @@ class App.Views.CaseShow extends App.Views.List
     created_at = moment(item.created_at).format('DD MMM. YYYY')
     li = "
       <li class='case' data-id='#{item.id}' data-name='#{item.attachment_file_name}'>
-        <div class='case-name'><a class='popup-iframe' href='//#{item.attachment_url}' target='blank'>#{item.attachment_file_name}</a></div>
+        <div class='case-name'><img src='images/document.png' alt='pdf'><a class='popup-iframe' href='//#{item.attachment_url}' target='blank'>#{item.attachment_file_name}</a></div>
         <div class='case-type'>#{item.attachment_content_type}</div>
         <div class='case-status'>#{created_at}</div>
       </li>

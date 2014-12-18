@@ -292,6 +292,13 @@ body {
       .main ul li .case-name {
         width: 55%;
         padding-left: 3%; }
+        .main ul li .case-name img {
+          width: 12px;
+          overflow: visible;
+          height: 15px;
+          position: absolute;
+          margin-left: -1.5%;
+          margin-top: 2px; }
         .main ul li .case-name a {
           color: #6e6e6e;
           text-decoration: none; }
