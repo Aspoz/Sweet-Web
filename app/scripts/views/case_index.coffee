@@ -38,9 +38,20 @@ class App.Views.CaseIndex extends App.Views.List
 
   renderList: (data) =>
     li = ''
-    for item in data
-      li += @listItem item
-    @regions.list.html("<ul>#{li}</ul>")
+    if data.length > 0
+      for item in data
+        li += @listItem item
+      @regions.list.html("<ul>#{li}</ul>")
+    else
+      @regions.list.html(@empty)
+
+  empty: (subject_id) ->
+    "
+      <div class='view-empty'>
+        <p>No Cases have been found.</p>
+        <p><a class='popup-inline button-square blue-button-square' href='#/cases/new'>Add a Case</a></p>
+      </div>
+    "
 
   prependItem: (data) =>
     @regions.list.find('ul').prepend(@listItem data)

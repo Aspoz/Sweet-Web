@@ -38,9 +38,20 @@ class App.Views.UserIndex extends App.Views.List
 
   renderList: (data) =>
     li = ''
-    for item in data
-      li += @listItem item
-    @regions.list.html("<ul>#{li}</ul>")
+    if data.length > 0
+      for item in data
+        li += @listItem item
+      @regions.list.html("<ul>#{li}</ul>")
+    else
+      @regions.list.html(@empty)
+
+  empty: ->
+    "
+      <div class='view-empty'>
+        <p>No Users have been found.</p>
+        <p><a class='popup-inline button-square blue-button-square' href='#/users/new'>Add a User</a></p>
+      </div>
+    "
 
   appendItem: (data) =>
     @regions.list.find('ul').append(@listItem data)

@@ -88,7 +88,7 @@ a {
   color: white;
   text-align: center;
   border: none;
-  font-size: 1em;
+  font-size: 16px;
   border-radius: 4px;
   cursor: pointer;
   font-weight: 700;
@@ -640,3 +640,7 @@ input[type=text], input[type=password] {
   display: block;
   margin-top: 20px;
 }
+.view-empty {
+  text-align: center;
+  margin-top: 100px;
+  font-size: 32px; }

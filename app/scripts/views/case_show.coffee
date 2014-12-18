@@ -38,9 +38,20 @@ class App.Views.CaseShow extends App.Views.List
 
   renderList: (data) =>
     li = ''
-    for item in data._links.documents
-      li += @listItem item
-    @regions.list.html("<ul>#{li}</ul>")
+    if data._links.documents.length > 0
+      for item in data._links.documents
+        li += @listItem item
+      @regions.list.html("<ul>#{li}</ul>")
+    else
+      @regions.list.html(@empty data.id)
+
+  empty: (subject_id) ->
+    "
+      <div class='view-empty'>
+        <p>No Files have been added to this case.</p>
+        <p><a class='popup-inline button-square blue-button-square' data-subject_id='#{subject_id}' href='#/documents/new'>Add Files</a></p>
+      </div>
+    "
 
   prependItem: (data) =>
     @regions.list.find('ul').prepend(@listItem data)
