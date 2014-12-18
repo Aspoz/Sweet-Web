@@ -29,7 +29,7 @@ class App.Views.Popup.Document
           <form id='dropzone' action='#{App.ApiLocation}documents' method='post'>
             <input type='hidden' name='document[subject_id]' value='#{data.subject_id}' />
             <input type='hidden' name='user_id' value='#{App.Session.userId}' />
-            <div class='dz-message'>Drag &amp; Drop your file(s) or select it from a directory</div>
+            <div class='dz-message'>Drag &amp; Drop your PDF file(s) or select it from a directory</div>
             <button class='button-square green-button-square btn-upload' type='submit'>UPLOAD</button>
           </form>
         </div>
