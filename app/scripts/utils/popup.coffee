@@ -17,10 +17,18 @@ class App.Util.Popup
       @showIframe e.target.href
 
   showInline: () ->
+    $('.white-popup').width('')
+    # $('.box-wrapper').width ''
+    # $('.box-wrapper').outerWidth()
+    # $('.white-popup').width(bxw)
+
     $.magnificPopup.open
       items:
         src: '.white-popup'
         type: 'inline'
+
+    $('.white-popup').width($('.box-wrapper').outerWidth())
+
 
   showIframe: (src) ->
     $.magnificPopup.open
