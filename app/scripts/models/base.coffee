@@ -14,7 +14,8 @@ class App.Models.Base
       statusCode:
         401: ->
           # Redirect to the login page.
-          App.Vent.publish 'sessions:auth:fail'
+          # App.Vent.publish 'sessions:auth:fail'
+          App.Vent.publish 'cookie:delete:sessions'
           routie('/')
         403: ->
           # 403 -- Access denied
