@@ -41,6 +41,10 @@ class App.Views.Login
     App.Vent.publish 'form:sessions:new'
 
   logIn: (data) =>
+    message = @regions.wrap.find '.error-message-login'
+    input = @regions.wrap.find '.inputfield'
+    message.empty()
+
     if data.success
       App.Session.userId = data.user_id
       App.Session.authToken = data.access_token
@@ -50,11 +54,10 @@ class App.Views.Login
         App.Vent.publish 'cookie:set:sessions', App.Session
         routie '/cases'
       else
-        routie '/logout'
+        App.Session = {}
+        input.addClass 'inputfield-error'
+        message.html("<p>You are not authorized.</p>")
     else
-      message = @regions.wrap.find '.error-message-login'
-      input = @regions.wrap.find '.inputfield'
-      message.empty()
       input.addClass 'inputfield-error'
       for error in data.errors
         html = "<p>* #{error}</p>"
