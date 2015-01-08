@@ -11,10 +11,10 @@ class App.Views.Popup.Document
       App.Vent.unsubscribe e
 
   addListeners: () ->
-    App.Vent.subscribe 'popup:documents:new', @newDocumentForm
-    App.Vent.subscribe 'popup:documents:delete', @deleteDocumentForm
+    App.Vent.subscribe 'popup:documents:new', @newForm
+    App.Vent.subscribe 'popup:documents:delete', @deleteForm
 
-  newDocumentForm: (data) ->
+  newForm: (data) ->
     html = "
     <div class='box-wrapper'>
       <div class='box-row-wrapper'>
@@ -40,7 +40,7 @@ class App.Views.Popup.Document
     App.Vent.publish 'form:documents:new', data
     App.Vent.publish 'popup:show:inline'
 
-  deleteDocumentForm: (data) ->
+  deleteForm: (data) ->
     html = "
     <div class='box-wrapper'>
       <div class='box-row-wrapper'>
@@ -59,8 +59,8 @@ class App.Views.Popup.Document
       </div>
       <div class='box-row-wrapper'>
         <div class='box-cell-wrapper'>
-            <a class='grey-button-square' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
-            <a class='red-button-square' id='popup-confirm-yes' href='#/documents/delete/yes'>DELETE</a>
+            <a class='button-square grey-button-square' id='popup-confirm-no' href='javascript:$.magnificPopup.close()'>CANCEL</a>
+            <a class='button-square red-button-square' id='popup-confirm-yes' href='#/documents/delete/yes'>DELETE</a>
         </div>
       </div>
     </div>"
