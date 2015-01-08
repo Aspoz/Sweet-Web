@@ -65,5 +65,5 @@ class App.Views.Popup.Document
       </div>
     </div>"
     $('#jst-popup').html(html)
-    App.Vent.publish 'form:document:delete', data
+    App.Vent.publish 'form:documents:delete', data
     App.Vent.publish 'popup:show:inline'
