@@ -1,3 +1,4 @@
+# Returns serialized object of a form
 $.fn.serializeObject = ->
   o = {}
   a = @serializeArray()
@@ -8,5 +9,4 @@ $.fn.serializeObject = ->
     else
       o[@name] = @value or ""
     return
-
   o
