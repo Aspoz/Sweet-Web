@@ -14,14 +14,10 @@ class App.Util.Popup
 
     $(document.body).on 'click', '.popup-iframe', (e) =>
       e.preventDefault()
-      console.log
       @showIframe e.target.href
 
   showInline: () ->
     $('.white-popup').width('')
-    # $('.box-wrapper').width ''
-    # $('.box-wrapper').outerWidth()
-    # $('.white-popup').width(bxw)
 
     $.magnificPopup.open
       items:
