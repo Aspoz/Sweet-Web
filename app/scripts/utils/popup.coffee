@@ -2,6 +2,7 @@ class App.Util.Popup
 
   constructor: ->
     App.Vent.subscribe 'popup:show:inline', @showInline
+    App.Vent.subscribe 'popup:show:iframe', @showIframe
     App.Vent.subscribe 'popup:close', @close
 
   start: =>
