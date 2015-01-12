@@ -46,15 +46,13 @@ class App.Views.Login
     message.empty()
 
     if data.success
-      App.Session.userId = data.user_id
-      App.Session.authToken = data.access_token
-      App.Session.isLoggedIn = true
-
       if data.group_id == 1
+        App.Session.userId = data.user_id
+        App.Session.authToken = data.access_token
+        App.Session.isLoggedIn = true
         App.Vent.publish 'cookie:set:sessions', App.Session
         routie '/cases'
       else
-        App.Session = {}
         input.addClass 'inputfield-error'
         message.html("<p>You are not authorized.</p>")
     else
