@@ -54,7 +54,12 @@ class App.Views.CaseIndex extends App.Views.List
     "
 
   prependItem: (data) =>
-    @regions.list.find('ul').prepend(@listItem data)
+    ul = @regions.list.find('ul')
+    li = @listItem data
+    if ul.length is 0
+      @regions.list.html("<ul>#{li}</ul>")
+    else
+      ul.prepend(li)
 
   renderHeading: ->
     html = "
