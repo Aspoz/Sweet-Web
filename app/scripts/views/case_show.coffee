@@ -73,7 +73,9 @@ class App.Views.CaseShow extends App.Views.List
     @regions.buttons.new.html(html)
 
   renderButtonEdit: (data) ->
-    html = "<a title='Edit Document' class='button-edit grey-button-round popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/edit'><img src='images/button-edit.png' alt=''></a>"
+    # Print empty string to DOM so edit button for documents isn't shown
+    # html = "<a title='Edit Document' class='button-edit grey-button-round popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/edit'><img src='images/button-edit.png' alt=''></a>"
+    # @regions.buttons.edit.html(html)
     @regions.buttons.edit.html('')
 
   renderButtonDelete: (data) ->
