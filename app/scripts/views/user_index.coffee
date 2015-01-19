@@ -34,16 +34,7 @@ class App.Views.UserIndex extends App.Views.List
         <div class='case-status'>#{item.group_title}</div>
       </li>
       "
-    return li
-
-  renderList: (data) =>
-    li = ''
-    if data.length > 0
-      for item in data
-        li += @listItem item
-      @regions.list.html("<ul>#{li}</ul>")
-    else
-      @regions.list.html(@empty)
+    li
 
   empty: ->
     "
@@ -52,9 +43,6 @@ class App.Views.UserIndex extends App.Views.List
         <p><a class='popup-inline button-square blue-button-square' href='#/users/new'>Add a User</a></p>
       </div>
     "
-
-  appendItem: (data) =>
-    @regions.list.find('ul').append(@listItem data)
 
   renderHeading: ->
     html = "
@@ -88,9 +76,6 @@ class App.Views.UserIndex extends App.Views.List
   renderButtonDelete: (data) ->
     html = "<a title='Delete User' class='button-delete red-button-round popup-inline' data-user_id='#{data.id}' data-user_name='#{data.name}' href='#/users/delete'><img src='images/button-delete.png' alt=''></a>"
     @regions.buttons.delete.html(html)
-
-  removeItem: (data) ->
-    $(".case[data-id=#{data.id}]").fadeOut(200)
 
   updateItem: (data) =>
     $el = $(".case[data-id=#{data.id}]")

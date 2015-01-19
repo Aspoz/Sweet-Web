@@ -20,7 +20,7 @@ class App.Views.CaseShow extends App.Views.List
 
   render: (data) =>
     @renderHeading()
-    @renderList(data)
+    @renderList(data._links.documents)
     @renderBreadcrumbs(data)
     @renderButtonNew(data)
     @editDeleteButtonsDelete()
@@ -34,16 +34,7 @@ class App.Views.CaseShow extends App.Views.List
         <div class='case-status'>#{created_at}</div>
       </li>
       "
-    return li
-
-  renderList: (data) =>
-    li = ''
-    if data._links.documents.length > 0
-      for item in data._links.documents
-        li += @listItem item
-      @regions.list.html("<ul>#{li}</ul>")
-    else
-      @regions.list.html(@empty data.id)
+    li
 
   empty: (subject_id) ->
     "
@@ -52,14 +43,6 @@ class App.Views.CaseShow extends App.Views.List
         <p><a class='popup-inline button-square blue-button-square' data-subject_id='#{subject_id}' href='#/documents/new'>Add Files</a></p>
       </div>
     "
-
-  prependItem: (data) =>
-    ul = @regions.list.find('ul')
-    li = @listItem data
-    if ul.length is 0
-      @regions.list.html("<ul>#{li}</ul>")
-    else
-      ul.prepend(li)
 
   renderHeading: ->
     html = "
@@ -96,6 +79,3 @@ class App.Views.CaseShow extends App.Views.List
   renderButtonDelete: (data) ->
     html = "<a title='Delete Document' class='button-delete red-button-round popup-inline' data-document_id='#{data.id}' data-document_name='#{data.name}' href='#/documents/delete'><img src='images/button-delete.png' alt=''></a>"
     @regions.buttons.delete.html(html)
-
-  removeItem: (data) ->
-    $(".case[data-id=#{data.id}]").fadeOut(200)

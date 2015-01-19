@@ -34,32 +34,15 @@ class App.Views.CaseIndex extends App.Views.List
         <div class='case-status'>#{item.status}</div>
       </li>
       "
-    return li
+    li
 
-  renderList: (data) =>
-    li = ''
-    if data.length > 0
-      for item in data
-        li += @listItem item
-      @regions.list.html("<ul>#{li}</ul>")
-    else
-      @regions.list.html(@empty)
-
-  empty: (subject_id) ->
+  empty: ->
     "
       <div class='view-empty'>
         <p>No Cases have been found.</p>
         <p><a class='popup-inline button-square blue-button-square' href='#/cases/new'>Add a Case</a></p>
       </div>
     "
-
-  prependItem: (data) =>
-    ul = @regions.list.find('ul')
-    li = @listItem data
-    if ul.length is 0
-      @regions.list.html("<ul>#{li}</ul>")
-    else
-      ul.prepend(li)
 
   renderHeading: ->
     html = "
@@ -93,9 +76,6 @@ class App.Views.CaseIndex extends App.Views.List
   renderButtonDelete: (data) ->
     html = "<a title='Delete Case' class='button-delete red-button-round popup-inline' data-case_id='#{data.id}' data-case_title='#{data.title}' href='#/cases/delete'><img src='images/button-delete.png' alt=''></a>"
     @regions.buttons.delete.html(html)
-
-  removeItem: (data) ->
-    $(".case[data-id=#{data.id}]").fadeOut(200)
 
   updateItem: (data) =>
     $el = $(".case[data-id=#{data.id}]")
