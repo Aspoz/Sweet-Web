@@ -15,6 +15,7 @@ class App.Views.Login
 
   addListeners: () ->
     @events.push App.Vent.subscribe 'model:sessions:create', @logIn
+    @events.push App.Vent.subscribe 'model:sessions:create:error', @logInError
 
   render: =>
     html = "
@@ -36,27 +37,29 @@ class App.Views.Login
       <p><input type='submit' name='commit' value='LOG IN' class='blue-large-button-square'></p>
     </form>
     "
-
     @regions.wrap.html(html)
     App.Vent.publish 'form:sessions:new'
 
   logIn: (data) =>
+    if data.group_id == 1
+      App.Session.userId = data.user_id
+      App.Session.authToken = data.access_token
+      App.Session.isLoggedIn = true
+      App.Vent.publish 'cookie:set:sessions', App.Session
+      routie '/cases'
+    else
+      message = @regions.wrap.find '.error-message-login'
+      input = @regions.wrap.find '.inputfield'
+      message.empty()
+      input.addClass 'inputfield-error'
+      message.html("<p>* You are not authorized.</p>")
+
+  logInError: (data) =>
     message = @regions.wrap.find '.error-message-login'
     input = @regions.wrap.find '.inputfield'
     message.empty()
 
-    if data.success
-      if data.group_id == 1
-        App.Session.userId = data.user_id
-        App.Session.authToken = data.access_token
-        App.Session.isLoggedIn = true
-        App.Vent.publish 'cookie:set:sessions', App.Session
-        routie '/cases'
-      else
-        input.addClass 'inputfield-error'
-        message.html("<p>You are not authorized.</p>")
-    else
-      input.addClass 'inputfield-error'
-      for error in data.errors
-        html = "<p>* #{error}</p>"
-        message.append(html)
+    input.addClass 'inputfield-error'
+    for error in data.errors
+      html = "<p>* #{error}</p>"
+      message.append(html)
