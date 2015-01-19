@@ -4,3 +4,4 @@ class App.Views.Popup
     new App.Views.Popup.Document
     new App.Views.Popup.Case
     new App.Views.Popup.User
+    new App.Views.Popup.NoInternet
