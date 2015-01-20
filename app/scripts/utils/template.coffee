@@ -17,7 +17,10 @@ class App.Util.Template
     $("#jst-#{data.template}").addClass('jst-active')
 
   showLoadingSpinner: () =>
-    @spinner.wrapper.stop(true, true).fadeIn()
+    @timeoutID = window.setTimeout(=>
+      @spinner.wrapper.stop(true, true).fadeIn()
+    , 1000)
 
   hideLoadingSpinner: () =>
+    window.clearTimeout @timeoutID
     @spinner.wrapper.stop(true, true).fadeOut(200)
