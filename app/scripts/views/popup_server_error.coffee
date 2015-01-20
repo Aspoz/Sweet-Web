@@ -11,7 +11,7 @@ class App.Views.Popup.NoInternet
       App.Vent.unsubscribe e
 
   addListeners: () ->
-    App.Vent.subscribe 'popup:errors:internet', @render
+    App.Vent.subscribe 'popup:errors:server', @render
 
   render: () ->
     html = "
@@ -19,21 +19,16 @@ class App.Views.Popup.NoInternet
       <div class='box-row-wrapper'>
         <div class='box-cell-wrapper'>
           <div class='box-title'>
-            NO INTERNET CONNECTION
+            INTERNAL SERVER ERROR
           </div>
         </div>
       </div>
       <div class='box-row-wrapper'>
         <div class='box-cell-wrapper'>
           <div class='step-title'>
-            Sory you are not connected to the internet! <br/>
-            Please re-connect with a stable connection to access the app
+            The server encountered an internal error or misconfiguration and was unable to complete your request. <br>
+            Please contact the server administrator, <a href='mailto:#{App.Settings.email}'>#{App.Settings.email}</a> and inform them of the time the error occurred, and anything you might have done that may have caused the error.
           </div>
-        </div>
-      </div>
-      <div class='box-row-wrapper'>
-        <div class='box-cell-wrapper'>
-            <a class='button-square grey-button-square' href='javascript:location.reload();'>TRY RE-CONNECTING</a>
         </div>
       </div>
     </div>
