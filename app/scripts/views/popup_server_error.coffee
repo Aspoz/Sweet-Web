@@ -1,4 +1,4 @@
-class App.Views.Popup.NoInternet
+class App.Views.Popup.ServerError
 
   events: []
 
@@ -25,8 +25,8 @@ class App.Views.Popup.NoInternet
       </div>
       <div class='box-row-wrapper'>
         <div class='box-cell-wrapper'>
-          <div class='step-title'>
-            The server encountered an internal error or misconfiguration and was unable to complete your request. <br>
+          <div class='step-title' style='width:500px;'>
+            The server encountered an internal error or misconfiguration and was unable to complete your request.
             Please contact the server administrator, <a href='mailto:#{App.Settings.email}'>#{App.Settings.email}</a> and inform them of the time the error occurred, and anything you might have done that may have caused the error.
           </div>
         </div>
