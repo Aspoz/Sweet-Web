@@ -1,7 +1,7 @@
 class App.Models.Base
 
   constructor: (@root)->
-    @urlRoot =  "#{App.ApiLocation}#{@root}/"
+    @urlRoot =  "#{App.Settings.api}#{@root}/"
     @setup()
 
   setup: ->
@@ -12,6 +12,8 @@ class App.Models.Base
         App.Vent.publish 'template:spinner:show'
         xhr.setRequestHeader "Authorization", "Token token=#{App.Session.authToken}"
       statusCode:
+        500: ->
+          App.Vent.publish 'popup:errors:server'
         401: ->
           # Redirect to the login page.
           # App.Vent.publish 'sessions:auth:fail'
@@ -22,7 +24,7 @@ class App.Models.Base
           App.Vent.publish 'sessions:auth:fail'
           routie('/')
         0: ->
-          App.Vent.publish 'popup:internet:nope'
+          App.Vent.publish 'popup:errors:internet'
 
   all: () ->
     $.ajax(

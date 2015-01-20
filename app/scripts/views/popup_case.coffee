@@ -47,7 +47,7 @@ class App.Views.Popup.Case
   newForm: (data) =>
     html = "
     <div class='box-wrapper'>
-      <form id='form-case-new' action='#{App.ApiLocation}cases' method='post'>
+      <form id='form-case-new' action='#{App.Settings.api}cases' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='box-title'>
@@ -109,7 +109,7 @@ class App.Views.Popup.Case
   editForm: (data) =>
     html = "
     <div class='box-wrapper'>
-      <form id='form-case-edit' action='#{App.ApiLocation}cases/#{data.case_id}' method='post'>
+      <form id='form-case-edit' action='#{App.Settings.api}cases/#{data.case_id}' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='box-title'>

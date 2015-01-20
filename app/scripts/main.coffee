@@ -4,8 +4,9 @@ window.App =
   Vent: PubSub
   Util: {}
   Session: {}
-  # ApiLocation: 'http://localhost:3000/'
-  ApiLocation: 'http://178.62.204.157/'
+  Settings:
+    api: 'http://178.62.204.157/'
+    email: 'admin@nam.nl'
 
   initialize: ->
     @navHelper()

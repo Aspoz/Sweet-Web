@@ -58,7 +58,7 @@ The basemodel requires a resource route wich leads to the API, which will be pas
     # models/base.coffee
     class App.Models.Base
       constructor: (@root)->
-        @urlRoot =  "#{App.ApiLocation}#{@root}/"
+        @urlRoot =  "#{App.Settings.api}#{@root}/"
 
 The base consist of 5 methods which are the following:
 
@@ -122,7 +122,7 @@ When the request made fails, there will be send out an event with the response f
 
 ### Extending from base
 
-When extending from the base class all that is needed is the location where the resource can be found on the api, relative to the ApiLocation.
+When extending from the base class all that is needed is the location where the resource can be found on the api, relative to the Settings.api.
 
 ##### Example
     

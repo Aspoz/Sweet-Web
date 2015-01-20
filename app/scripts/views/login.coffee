@@ -25,7 +25,7 @@ class App.Views.Login
       </div>
     </div>
 
-    <form id='form-login' method='post' action='#{App.ApiLocation}sessions'>
+    <form id='form-login' method='post' action='#{App.Settings.api}sessions'>
       <p>
         <input class='inputfield' type='text' name='email' value='' placeholder='E-mail'>
       </p>

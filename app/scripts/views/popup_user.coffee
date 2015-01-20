@@ -20,7 +20,7 @@ class App.Views.Popup.User
   newForm: (data) ->
     html = "
     <div class='box-wrapper popup-user-wrapper'>
-      <form id='form-user-new' action='#{App.ApiLocation}users' method='post'>
+      <form id='form-user-new' action='#{App.Settings.api}users' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='box-title box-title-user'>
@@ -71,7 +71,7 @@ class App.Views.Popup.User
   editForm: (data) ->
     html = "
     <div class='box-wrapper popup-user-wrapper'>
-      <form id='form-user-edit' action='#{App.ApiLocation}users/#{data.user_id}' method='post'>
+      <form id='form-user-edit' action='#{App.Settings.api}users/#{data.user_id}' method='post'>
         <div class='box-row-wrapper'>
           <div class='box-cell-wrapper'>
             <div class='box-title box-title-user'>
