@@ -5,7 +5,7 @@ window.App =
   Util: {}
   Session: {}
   Settings:
-    api: 'http://sweet.peperzaken.nl/api'
+    api: '//sweet.peperzaken.nl/'
     email: 'admin@nam.nl'
 
   initialize: ->

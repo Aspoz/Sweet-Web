@@ -88,3 +88,31 @@ class App.Views.CaseIndex extends App.Views.List
     $el.find('.case-type').html(data.casetype)
     $el.find('.case-status').html(data.status)
     @editDeleteButtonsDelete()
+
+  renderList: (data) =>
+    li = ''
+    if data.length > 0
+      for item in data
+        li += @listItem item
+      @regions.list.html("<ul>#{li}</ul>")
+    else
+      @regions.list.html(@empty)
+
+  prependItem: (data) =>
+    ul = @regions.list.find('ul')
+    li = @listItem data
+    if ul.length is 0
+      @regions.list.html("<ul>#{li}</ul>")
+    else
+      ul.prepend(li)
+
+  appendItem: (data) =>
+    ul = @regions.list.find('ul')
+    li = @listItem data
+    if ul.length is 0
+      @regions.list.html("<ul>#{li}</ul>")
+    else
+      ul.append(li)
+
+  removeItem: (data) ->
+    $(".case[data-id=#{data.id}]").fadeOut(200)
