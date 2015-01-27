@@ -1,8 +1,5 @@
 # Webapplicatie
 
-The webapplication can be found in the following repostory:
-[https://github.com/Aspoz/Sweet-Web]()
-
 ## Getting started
 
 To get started you will need the following.  
