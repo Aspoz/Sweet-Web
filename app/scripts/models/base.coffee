@@ -23,8 +23,6 @@ class App.Models.Base
           # 403 -- Access denied
           App.Vent.publish 'sessions:auth:fail'
           routie('/')
-        0: ->
-          App.Vent.publish 'popup:errors:internet'
 
   all: () ->
     $.ajax(

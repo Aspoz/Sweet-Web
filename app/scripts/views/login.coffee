@@ -60,6 +60,11 @@ class App.Views.Login
     message.empty()
 
     input.addClass 'inputfield-error'
-    for error in data.errors
-      html = "<p>* #{error}</p>"
+    if data
+      for error in data.errors
+        html = "<p>* #{error}</p>"
+        message.append(html)
+    else
+      html = "<p>* Unable to reach the server</p>"
       message.append(html)
+
